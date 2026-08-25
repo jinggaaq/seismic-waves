@@ -1,0 +1,426 @@
+{% extends "base.html" %}
+
+{% block title %}
+Riwayat Pembelian | Seismic Waves
+{% endblock %}
+
+
+{% block page_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/riwayat.css') }}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="history-page">
+
+    <div class="history-container">
+
+
+        <!-- =========================================
+             HEADER
+        ========================================== -->
+
+        <div class="history-header">
+
+            <h1>
+                Your History
+            </h1>
+
+            <p>
+                Lihat riwayat pesanan dan pembelian kamu.
+            </p>
+
+        </div>
+
+
+
+        {% if pesanan_list %}
+
+
+        <!-- =========================================
+             TABLE HEADER
+        ========================================== -->
+
+        <div class="history-table-header">
+
+            <div>
+                ORDER
+            </div>
+
+            <div>
+                DATE
+            </div>
+
+            <div>
+                ITEMS
+            </div>
+
+            <div>
+                TOTAL
+            </div>
+
+            <div>
+                STATUS
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================================
+             HISTORY LIST
+        ========================================== -->
+
+        <div class="history-list">
+
+
+            {% for pesanan in pesanan_list %}
+
+
+            <!-- =====================================
+                 HISTORY CARD
+            ====================================== -->
+
+            <div class="history-card">
+
+
+                <!-- =================================
+                     ORDER
+                ================================== -->
+
+                <div class="history-order">
+
+                    <span class="history-label">
+                        ORDER ID
+                    </span>
+
+                    <strong>
+                        #{{ pesanan.kode_pesanan }}
+                    </strong>
+
+                </div>
+
+
+
+                <!-- =================================
+                     DATE
+                ================================== -->
+
+                <div class="history-date">
+
+                    {% if pesanan.tanggal_pesanan %}
+
+                        <strong>
+
+                            {{
+                                pesanan.tanggal_pesanan.strftime(
+                                    '%d %b %Y'
+                                )
+                            }}
+
+                        </strong>
+
+                        <span>
+
+                            {{
+                                pesanan.tanggal_pesanan.strftime(
+                                    '%H:%M'
+                                )
+                            }}
+
+                            WIB
+
+                        </span>
+
+                    {% else %}
+
+                        <strong>
+                            -
+                        </strong>
+
+                    {% endif %}
+
+                </div>
+
+
+
+                <!-- =================================
+                     ITEMS / PRODUK
+                ================================== -->
+
+                <div class="history-items">
+
+
+                    {% if pesanan.detail_pesanan %}
+
+
+                        {% for detail in pesanan.detail_pesanan %}
+
+
+                        <div class="history-product">
+
+
+                            <!-- =========================
+                                 GAMBAR PRODUK
+                            ========================== -->
+
+                            <div class="history-product-image">
+
+                                <img
+                                    src="{{ url_for(
+                                        'static',
+                                        filename='pictures/produk/'
+                                        + detail.produk.folder
+                                        + '/1.jpg'
+                                    ) }}"
+                                    alt="{{ detail.produk.nama }}"
+                                >
+
+                            </div>
+
+
+
+                            <!-- =========================
+                                 INFORMASI PRODUK
+                            ========================== -->
+
+                            <div class="history-product-info">
+
+                                <strong>
+                                    {{ detail.produk.nama }}
+                                </strong>
+
+
+                                <span>
+                                    Size: {{ detail.ukuran }}
+                                </span>
+
+
+                                <span>
+                                    Qty: {{ detail.jumlah }}
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        {% endfor %}
+
+
+                    {% else %}
+
+                        <span class="no-item">
+                            Tidak ada detail produk.
+                        </span>
+
+                    {% endif %}
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     TOTAL
+                ================================== -->
+
+                <div class="history-total">
+
+                    <strong>
+
+                        Rp{{
+                            "{:,.0f}".format(
+                                pesanan.total_harga
+                            ).replace(",", ".")
+                        }}
+
+                    </strong>
+
+                </div>
+
+
+
+                <!-- =================================
+                     STATUS
+                ================================== -->
+
+                <div class="history-status">
+
+
+                    {% set status = pesanan.status_pesanan|lower %}
+
+
+
+                    <!-- =============================
+                         SELESAI
+                    ============================== -->
+
+                    {% if status in [
+                        'selesai',
+                        'completed',
+                        'delivered'
+                    ] %}
+
+                    <span class="status completed">
+
+                        <span class="status-dot"></span>
+
+                        Selesai
+
+                    </span>
+
+
+
+                    <!-- =============================
+                         DIKIRIM
+                    ============================== -->
+
+                    {% elif status in [
+                        'dikirim',
+                        'shipped'
+                    ] %}
+
+                    <span class="status shipped">
+
+                        <span class="status-dot"></span>
+
+                        Dikirim
+
+                    </span>
+
+
+
+                    <!-- =============================
+                         DIPROSES
+                    ============================== -->
+
+                    {% elif status in [
+                        'diproses',
+                        'processing'
+                    ] %}
+
+                    <span class="status processing">
+
+                        <span class="status-dot"></span>
+
+                        Diproses
+
+                    </span>
+
+
+
+                    <!-- =============================
+                         DIBATALKAN
+                    ============================== -->
+
+                    {% elif status in [
+                        'dibatalkan',
+                        'cancelled'
+                    ] %}
+
+                    <span class="status cancelled">
+
+                        <span class="status-dot"></span>
+
+                        Dibatalkan
+
+                    </span>
+
+
+
+                    <!-- =============================
+                         STATUS LAIN
+                    ============================== -->
+
+                    {% else %}
+
+                    <span class="status">
+
+                        <span class="status-dot"></span>
+
+                        {{ pesanan.status_pesanan }}
+
+                    </span>
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             HELP
+        ========================================== -->
+
+        <div class="history-help">
+
+            <p>
+                Butuh bantuan dengan pesanan kamu?
+            </p>
+
+            <a href="#">
+                Contact Us
+            </a>
+
+        </div>
+
+
+
+        {% else %}
+
+
+        <!-- =========================================
+             EMPTY HISTORY
+        ========================================== -->
+
+        <div class="empty-history">
+
+            <div class="empty-icon">
+                🛍
+            </div>
+
+
+            <h2>
+                Belum Ada Riwayat Pembelian
+            </h2>
+
+
+            <p>
+                Pesanan yang kamu lakukan pada perangkat ini
+                akan muncul di sini.
+            </p>
+
+
+            <a href="{{ url_for('catalog') }}">
+                Mulai Belanja
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+</div>
+
+{% endblock %}

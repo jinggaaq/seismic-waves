@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+
+    <!-- ================= TITLE ================= -->
+
+    <title>
+        {% block title %}
+        Seismic Waves
+        {% endblock %}
+    </title>
+
+
+    <!-- ================= GOOGLE FONT ================= -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ================= FONT AWESOME ================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <!-- ================= GLOBAL CSS ================= -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/navbar.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/footer.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/responsive.css') }}"
+    >
+
+
+    <!-- ================= PAGE SPECIFIC CSS ================= -->
+
+    {% block page_css %}
+    {% endblock %}
+
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+                         NAVBAR
+    ================================================== -->
+
+    <header>
+
+        <div class="container navbar">
+
+
+            <!-- ================= LOGO ================= -->
+
+            <a
+                href="{{ url_for('home') }}"
+                class="logo"
+            >
+
+                <h2>SEISMIC</h2>
+
+                <span>WAVES</span>
+
+            </a>
+
+
+            <!-- ================= DESKTOP / MOBILE MENU ================= -->
+            <nav id="mainNav">
+
+                <ul>
+
+                    <li>
+                        <a href="{{ url_for('home') }}">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('catalog') }}">
+                            Shop
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('about') }}">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('riwayat') }}">
+                            History
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- ================= HAMBURGER ================= -->
+
+            <button
+                class="hamburger"
+                id="hamburgerBtn"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <!-- ================= NAVBAR ICONS ================= -->
+
+            <div class="navbar-icons">
+
+                <!-- Cart -->
+
+                <a
+                    href="{{ url_for('cart') }}"
+                    class="cart-icon"
+                >
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+
+                    {% if cart_count > 0 %}
+
+                    <span class="cart-count">
+                        {{ cart_count }}
+                    </span>
+
+                    {% endif %}
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==================================================
+                         PAGE CONTENT
+    ================================================== -->
+
+    {% block content %}
+    {% endblock %}
+
+
+
+    <!-- ==================================================
+                         FOOTER
+    ================================================== -->
+
+    <footer>
+
+
+        <div class="container footer-container">
+
+
+            <!-- ================= FOOTER ABOUT ================= -->
+
+            <div class="footer-about">
+
+                <h2>
+                    SEISMIC WAVES
+                </h2>
+
+                <p>
+
+                    Streetwear with Unique Vision.
+
+                    Premium fashion brand that combines
+                    comfort, quality, and modern style.
+
+                </p>
+
+            </div>
+
+
+            <!-- ================= FOOTER CONTACT ================= -->
+
+            <div class="footer-contact">
+
+                <h3>
+                    Contact
+                </h3>
+
+
+                <ul>
+
+
+                    <!-- ALAMAT -->
+
+                    <li>
+
+                        <i
+                            class="fa-solid fa-location-dot"
+                        ></i>
+
+                        <a
+                            href="https://maps.app.goo.gl/B8G9RtBcncZCu5P66"
+                            target="_blank"
+                        >
+                            Alamat Seismic Waves
+                        </a>
+
+                    </li>
+
+
+                    <!-- EMAIL -->
+
+                    <li>
+
+                        <i
+                            class="fa-solid fa-envelope"
+                        ></i>
+
+                        <a
+                            href="mailto:seismicwaves@gmail.com"
+                        >
+                            seismicwaves@gmail.com
+                        </a>
+
+                    </li>
+
+
+                    <!-- WHATSAPP -->
+
+                    <li>
+
+                        <i
+                            class="fa-brands fa-whatsapp"
+                        ></i>
+
+                        <a
+                            href="https://wa.me/6281234567890"
+                            target="_blank"
+                        >
+                            +62 812-3456-7890
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </div>
+
+
+            <!-- ================= FOOTER SOCIAL ================= -->
+
+            <div class="footer-social">
+
+                <h3>
+                    Follow Us
+                </h3>
+
+
+                <div class="social-icons">
+
+
+                    <!-- Instagram -->
+
+                    <a
+                        href="https://www.instagram.com/seismic.wavesss?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        target="_blank"
+                    >
+
+                        <i
+                            class="fa-brands fa-instagram"
+                        ></i>
+
+                    </a>
+
+
+                    <!-- TikTok -->
+
+                    <a
+                        href="https://www.tiktok.com/@seismic.waves?_r=1&_t=ZS-98z9Q6zVZ1p"
+                        target="_blank"
+                    >
+
+                        <i
+                            class="fa-brands fa-tiktok"
+                        ></i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= FOOTER BOTTOM ================= -->
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 Seismic Waves.
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- ==================================================
+                         HAMBURGER JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const hamburgerBtn =
+                document.getElementById("hamburgerBtn");
+
+            const mainNav =
+                document.getElementById("mainNav");
+
+
+            if (!hamburgerBtn || !mainNav) {
+                return;
+            }
+
+
+            hamburgerBtn.addEventListener("click", function () {
+
+                const isOpen =
+                    mainNav.classList.toggle("active");
+
+
+                hamburgerBtn.classList.toggle(
+                    "active",
+                    isOpen
+                );
+
+
+                hamburgerBtn.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+
+                hamburgerBtn.setAttribute(
+                    "aria-label",
+                    isOpen
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                );
+
+            });
+
+
+            /* ==========================================
+               CLOSE MENU AFTER CLICKING LINK
+            ========================================== */
+
+            const navLinks =
+                mainNav.querySelectorAll("a");
+
+
+            navLinks.forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    mainNav.classList.remove("active");
+
+                    hamburgerBtn.classList.remove("active");
+
+                    hamburgerBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    hamburgerBtn.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
+
+                });
+
+            });
+
+
+            /* ==========================================
+               CLOSE MENU WHEN RESIZE TO DESKTOP
+            ========================================== */
+
+            window.addEventListener(
+                "resize",
+                function () {
+
+                    if (window.innerWidth > 768) {
+
+                        mainNav.classList.remove("active");
+
+                        hamburgerBtn.classList.remove("active");
+
+                        hamburgerBtn.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+            );
+
+        });
+
+    </script>
+
+
+    <!-- ==================================================
+                         PAGE JAVASCRIPT
+    ================================================== -->
+
+    {% block scripts %}
+    {% endblock %}
+
+
+</body>
+
+</html>

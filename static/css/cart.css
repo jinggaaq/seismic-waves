@@ -1,0 +1,457 @@
+/* ==========================================
+   CART PAGE - SEISMIC WAVES
+   ========================================== */
+
+.cart-page{
+    background:#080808;
+    color:#fff;
+    min-height:100vh;
+    padding:110px 0 80px;
+}
+
+.cart-container{
+    width:100%;
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 24px;
+}
+
+/* ==========================================
+   TITLE
+   ========================================== */
+
+.cart-title{
+    font-family:'Oswald',sans-serif;
+    font-size:72px;
+    font-weight:500;
+    color:#fff;
+    margin:0 0 32px;
+    letter-spacing:.5px;
+    line-height:1;
+}
+
+/* ==========================================
+   TABLE HEADER
+   ========================================== */
+
+.cart-header{
+    display:grid;
+    grid-template-columns:55% 15% 15% 15%;
+    align-items:center;
+    padding:18px 0;
+    border-top:1px solid #2a2a2a;
+    border-bottom:1px solid #2a2a2a;
+    text-transform:uppercase;
+    font-size:13px;
+    font-weight:600;
+    color:#d5d5d5;
+    letter-spacing:1px;
+}
+
+.cart-header div:first-child{
+    padding-left:12px;
+    text-align:left;
+}
+
+.cart-header div:not(:first-child){
+    text-align:center;
+}
+
+/* ==========================================
+   CART LIST
+   ========================================== */
+
+.cart-list{
+    width:100%;
+}
+
+.cart-row{
+    display:grid;
+    grid-template-columns:55% 15% 15% 15%;
+    align-items:center;
+    padding:32px 0;
+    border-bottom:1px solid #1f1f1f;
+}
+
+/* ==========================================
+   PRODUCT
+   ========================================== */
+
+.cart-product{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    padding-right:20px;
+}
+
+.cart-image{
+    width:150px;
+    height:180px;
+    border-radius:8px;
+    overflow:hidden;
+    flex-shrink:0;
+    background:#111;
+}
+
+.cart-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.cart-details{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.cart-details h3{
+    font-family:'Oswald',sans-serif;
+    font-size:36px;
+    font-weight:500;
+    color:#fff;
+    margin:0 0 8px;
+    line-height:1.1;
+}
+
+.cart-details p{
+    color:#9d9d9d;
+    font-size:16px;
+    margin:0 0 18px;
+}
+
+.remove-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    width:max-content;
+    padding:10px 16px;
+    border:1px solid #333;
+    border-radius:6px;
+    color:#fff;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    transition:.25s;
+}
+
+.remove-btn:hover{
+    background:#111;
+    border-color:#555;
+}
+
+/* ==========================================
+   PRICE & TOTAL
+   ========================================== */
+
+.cart-price,
+.cart-total{
+    text-align:center;
+    font-size:22px;
+    font-weight:600;
+    color:#fff;
+}
+
+/* ==========================================
+   QUANTITY
+   ========================================== */
+
+.cart-quantity{
+    display:flex;
+    justify-content:center;
+}
+
+.qty-box{
+    display:flex;
+    align-items:center;
+    width:150px;
+    height:48px;
+    border:1px solid #3a3a3a;
+    border-radius:6px;
+    overflow:hidden;
+}
+
+.qty-box button{
+    width:48px;
+    height:48px;
+    border:none;
+    background:transparent;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.qty-box button:hover{
+    background:#111;
+}
+
+.qty-box input{
+    width:54px;
+    height:48px;
+    border:none;
+    border-left:1px solid #3a3a3a;
+    border-right:1px solid #3a3a3a;
+    background:transparent;
+    color:#fff;
+    text-align:center;
+    font-size:16px;
+    font-weight:600;
+    outline:none;
+}
+
+/* ==========================================
+   BOTTOM SECTION
+   ========================================== */
+
+.cart-bottom{
+    display:grid;
+    grid-template-columns:1fr 430px;
+    gap:48px;
+    margin-top:50px;
+    align-items:start;
+}
+
+.continue-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 22px;
+    border:1px solid #3a3a3a;
+    border-radius:8px;
+    color:#fff;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.6px;
+    transition:.25s;
+}
+
+.continue-btn:hover{
+    background:#111;
+    border-color:#555;
+}
+
+/* ==========================================
+   SUMMARY CARD
+   ========================================== */
+
+.summary-card{
+    border:1px solid #2a2a2a;
+    border-radius:12px;
+    padding:32px;
+    background:transparent;
+}
+
+.summary-card h3{
+    font-family:'Oswald',sans-serif;
+    font-size:38px;
+    font-weight:500;
+    color:#fff;
+    margin-bottom:26px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#d0d0d0;
+    margin-bottom:18px;
+    font-size:18px;
+}
+
+.summary-divider{
+    height:1px;
+    background:#2a2a2a;
+    margin:24px 0;
+}
+
+.summary-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#fff;
+    margin-bottom:28px;
+}
+
+.summary-total span{
+    font-size:20px;
+}
+
+.summary-total strong{
+    font-family:'Oswald',sans-serif;
+    font-size:36px;
+    font-weight:600;
+}
+
+.checkout-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    height:58px;
+    border-radius:8px;
+    background:#fff;
+    color:#111;
+    text-decoration:none;
+    font-weight:700;
+    text-transform:uppercase;
+    transition:.25s;
+    margin-bottom:14px;
+}
+
+.checkout-btn:hover{
+    opacity:.9;
+}
+
+.buy-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:56px;
+    border:1px solid #3a3a3a;
+    border-radius:8px;
+    background:transparent;
+    color:#fff;
+    font-weight:700;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.buy-btn:hover{
+    background:#111;
+    border-color:#555;
+}
+
+/* ==========================================
+   FEATURES
+   ========================================== */
+
+.cart-features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:36px;
+    margin-top:60px;
+    padding-top:36px;
+    border-top:1px solid #222;
+}
+
+.feature{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+}
+
+.feature i{
+    font-size:22px;
+    color:#fff;
+}
+
+.feature strong{
+    display:block;
+    color:#fff;
+    margin-bottom:6px;
+    font-size:15px;
+}
+
+.feature p{
+    color:#9a9a9a;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* ==========================================
+   EMPTY CART
+   ========================================== */
+
+.empty-cart{
+    text-align:center;
+    padding:80px 0;
+}
+
+.empty-cart h2{
+    font-family:'Oswald',sans-serif;
+    font-size:42px;
+    margin-bottom:24px;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media(max-width:992px){
+
+    .cart-header{
+        display:none;
+    }
+
+    .cart-row{
+        grid-template-columns:1fr;
+        gap:24px;
+        padding:28px 0;
+    }
+
+    .cart-price,
+    .cart-total{
+        text-align:left;
+        font-size:20px;
+    }
+
+    .cart-quantity{
+        justify-content:flex-start;
+    }
+
+    .cart-bottom{
+        grid-template-columns:1fr;
+    }
+
+    .cart-features{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .cart-page{
+        padding:140px 0 60px;
+    }
+
+    .cart-title{
+        font-size:48px;
+    }
+
+    .cart-product{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .cart-image{
+        width:100%;
+        height:320px;
+    }
+
+    .cart-details h3{
+        font-size:30px;
+    }
+
+    .summary-card{
+        padding:24px;
+    }
+
+    .summary-card h3{
+        font-size:32px;
+    }
+
+    .summary-total strong{
+        font-size:30px;
+    }
+
+}
+

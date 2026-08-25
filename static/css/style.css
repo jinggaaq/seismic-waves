@@ -1,0 +1,1490 @@
+/* ==========================================
+   GOOGLE FONT
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================
+   RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(
+        135deg,
+        #171717 0%,
+        #242424 45%,
+        #363636 100%
+    );
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    font-family:'Poppins',sans-serif;
+}
+
+input{
+    outline:none;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ==========================================
+   ROOT COLOR
+========================================== */
+
+:root{
+    --primary:#F5F5F5;
+    --secondary:#D5D5D5;
+    --black:#3D3D3D;
+    --dark:#464646;
+    --card:#ECECEC;
+    --border:#555555;
+    --hover:#FFFFFF;
+}
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+/* ==========================================
+   SECTION
+========================================== */
+
+section{
+
+    padding:90px 0;
+    background:transparent;
+
+}
+
+.hero{
+
+    padding:0;
+
+}
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-family:'Oswald',sans-serif;
+    font-size:52px;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#bbbbbb;
+    font-size:16px;
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 35px;
+    background:white;
+    color:#111;
+    border-radius:40px;
+    font-weight:600;
+    transition:.35s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(255,255,255,.18);
+}
+
+.btn-dark{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px 35px;
+    border:2px solid white;
+    color:white;
+    border-radius:40px;
+    transition:.35s;
+}
+
+.btn-dark:hover{
+    background:white;
+    color:#111;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.card{
+    background:var(--card);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.35s;
+    border:1px solid var(--border);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:var(--shadow);
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#1b1b1b;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#666;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:white;
+}
+
+/* ==========================================
+   ANIMATION
+========================================== */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s ease;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ==========================================
+   SELECTION
+========================================== */
+
+::selection{
+    background:white;
+    color:black;
+}
+
+/* ==========================================
+   TEXT
+========================================== */
+
+h1,h2,h3,h4{
+    font-family:'Oswald',sans-serif;
+}
+
+p{
+    color:#cfcfcf;
+    line-height:1.8;
+}
+
+/* ==========================================
+        WHAT WE BELIEVE
+========================================== */
+
+.brand-values{
+    background:transparent;
+}
+
+
+/* ==========================================
+        SECTION LABEL
+========================================== */
+
+.brand-values-label{
+
+    padding-bottom:25px;
+
+    border-bottom:1px solid #555;
+
+    font-size:14px;
+
+    letter-spacing:3px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================
+        VALUES GRID
+========================================== */
+
+.brand-values-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    border-bottom:1px solid #555;
+
+}
+
+
+.brand-value{
+
+    min-height:210px;
+
+    padding:30px;
+
+    border-right:1px solid #555;
+
+    position:relative;
+
+}
+
+
+.brand-value:first-child{
+
+    border-left:1px solid #555;
+
+}
+
+
+.brand-value span{
+
+    font-size:16px;
+
+    color:#999;
+
+    font-weight:500;
+
+}
+
+
+.brand-value h3{
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:30px;
+
+    letter-spacing:1px;
+
+    margin-top:25px;
+
+    margin-bottom:10px;
+
+}
+
+
+.brand-value p{
+
+    color:#aaa;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+
+.brand-value i{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:30px;
+
+    color:#aaa;
+
+    font-size:16px;
+
+}
+
+
+/* ==========================================
+        BIG STATEMENT
+========================================== */
+
+.brand-statement{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:60px;
+
+    padding-top:90px;
+
+}
+/* ==========================================
+        STATEMENT CONTENT
+========================================== */
+
+.brand-statement-content{
+
+    width:350px;
+
+}
+
+
+.brand-statement-content p{
+
+    color:#d0d0d0;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    margin-bottom:30px;
+
+}
+
+
+.brand-statement-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 22px;
+
+    border:1px solid white;
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+    transition:.3s;
+
+}
+
+
+.brand-statement-btn:hover{
+
+    background:white;
+
+    color:#171717;
+
+}
+
+/* ==========================================
+        SEISMIC BRAND SECTION
+========================================== */
+
+.brand-values{
+    position:relative;
+    overflow:hidden;
+    padding:60px 0;
+    color:#fff;
+    background:#171717;
+}
+
+
+/* ==========================================
+        TOP LABEL
+========================================== */
+
+.brand-values-label{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding-bottom:25px;
+
+    border-bottom:1px solid rgba(255,255,255,.18);
+
+    color:#aaa;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================
+        VALUES GRID
+========================================== */
+
+.brand-values-grid{
+
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    border-bottom:1px solid rgba(255,255,255,.18);
+
+}
+
+
+/* ==========================================
+        VALUE CARD
+========================================== */
+
+.brand-value{
+
+    position:relative;
+
+    min-height:270px;
+
+    padding:32px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    border-right:1px solid rgba(255,255,255,.18);
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:
+        background .5s ease,
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        border-color .5s ease;
+
+}
+
+
+.brand-value:first-child{
+
+    border-left:1px solid rgba(255,255,255,.18);
+
+}
+
+
+/* hover glow */
+
+.brand-value::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    filter:blur(90px);
+
+    opacity:0;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    transition:opacity .5s ease;
+
+}
+
+
+.brand-value:hover::before{
+
+    opacity:.08;
+
+}
+
+
+.brand-value:hover{
+
+    background:rgba(255,255,255,.035);
+
+    transform:translateY(-10px);
+
+    border-color:rgba(255,255,255,.45);
+
+}
+
+/* ==========================================
+        ANIMATED CARD LINE
+========================================== */
+
+.value-line{
+
+    position:absolute;
+
+    left:32px;
+
+    bottom:0;
+
+    width:0;
+
+    height:2px;
+
+    background:#fff;
+
+    transition:
+        width .6s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+.brand-value:hover .value-line{
+
+    width:calc(100% - 64px);
+
+}
+
+
+/* ==========================================
+        NUMBER
+========================================== */
+
+.value-number{
+
+    position:relative;
+
+    z-index:2;
+
+    color:#777;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    transition:
+        color .4s ease,
+        transform .4s ease;
+
+}
+
+
+.brand-value:hover .value-number{
+
+    color:#fff;
+
+    transform:translateX(8px);
+
+}
+
+
+/* ==========================================
+        TITLE
+========================================== */
+
+.brand-value h3{
+
+    position:relative;
+
+    z-index:2;
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:34px;
+
+    letter-spacing:1px;
+
+    margin-bottom:10px;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        letter-spacing .5s ease,
+        color .5s ease;
+
+}
+
+
+.brand-value:hover h3{
+
+    transform:translateX(10px);
+
+    letter-spacing:3px;
+
+    color:#ffffff;
+
+}
+
+
+.brand-value p{
+
+    position:relative;
+
+    z-index:2;
+
+    color:#999;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+}
+
+
+/* ==========================================
+        ARROW
+========================================== */
+
+.value-arrow{
+
+    position:relative;
+
+    z-index:2;
+
+    align-self:flex-start;
+
+    color:#777;
+
+    font-size:22px;
+
+    transition:
+        transform .4s ease,
+        color .4s ease;
+
+}
+
+
+.brand-value:hover .value-arrow{
+
+    color:#fff;
+
+    transform:
+        translate(10px,-10px)
+        rotate(5deg);
+
+}
+
+
+/* ==========================================
+        BIG STATEMENT
+========================================== */
+
+.brand-statement{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:80px;
+
+    padding-top:100px;
+
+}
+
+
+/* ==========================================
+        SMALL TEXT
+========================================== */
+
+.statement-small{
+
+    display:block;
+
+    margin-bottom:25px;
+
+    color:#888;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+}
+
+
+/* ==========================================
+        BIG TYPOGRAPHY
+========================================== */
+
+.brand-statement-title h2{
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:clamp(
+        55px,
+        8vw,
+        125px
+    );
+
+    line-height:.83;
+
+    letter-spacing:-3px;
+
+    font-weight:700;
+
+}
+/* ==========================================
+        RIGHT CONTENT
+========================================== */
+
+.brand-statement-content{
+
+    width:350px;
+
+    padding-bottom:5px;
+
+}
+
+
+/* animated line */
+
+.statement-line{
+
+    width:60px;
+
+    height:2px;
+
+    margin-bottom:25px;
+
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #6f7cff
+    );
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.brand-statement:hover .statement-line{
+
+    width:120px;
+
+}
+
+
+.brand-statement-content p{
+
+    color:#c8c8c8;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ==========================================
+        BUTTON
+========================================== */
+
+.brand-statement-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    width:100%;
+
+    padding:17px 20px;
+
+    border:1px solid rgba(255,255,255,.5);
+
+    color:#fff;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    font-weight:600;
+
+    transition:
+        background .4s ease,
+        border .4s ease,
+        transform .4s ease;
+
+}
+
+
+.brand-statement-btn:hover{
+
+    background:#fff;
+
+    color:#171717;
+
+    border-color:#fff;
+
+    transform:translateX(8px);
+
+}
+
+
+.btn-arrow{
+
+    font-size:20px;
+
+    transition:transform .4s ease;
+
+}
+
+
+.brand-statement-btn:hover .btn-arrow{
+
+    transform:
+        translate(5px,-5px);
+
+}
+
+/* ==========================================
+        BRAND SECTION RESPONSIVE
+========================================== */
+
+@media(max-width:900px){
+
+    .brand-values{
+
+        padding:80px 0;
+
+    }
+
+
+    .brand-values-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .brand-value:nth-child(2){
+
+        border-right:none;
+
+    }
+
+
+    .brand-value:nth-child(3){
+
+        border-left:1px solid rgba(255,255,255,.18);
+
+    }
+
+
+    .brand-statement{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:50px;
+
+        padding-top:70px;
+
+    }
+
+
+    .brand-statement-content{
+
+        width:100%;
+
+        max-width:450px;
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .brand-values{
+
+        padding:70px 0;
+
+    }
+
+
+    .brand-values-label{
+
+        font-size:10px;
+
+        letter-spacing:2px;
+
+    }
+
+
+    .brand-values-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .brand-value{
+
+        min-height:190px;
+
+        border-left:1px solid rgba(255,255,255,.18);
+
+        border-bottom:1px solid rgba(255,255,255,.18);
+
+    }
+
+
+    .brand-value:nth-child(2){
+
+        border-right:1px solid rgba(255,255,255,.18);
+
+    }
+
+
+    .brand-value:nth-child(3){
+
+        border-left:1px solid rgba(255,255,255,.18);
+
+    }
+
+
+    .brand-statement{
+
+        padding-top:60px;
+
+    }
+
+
+    .brand-statement-title h2{
+
+        font-size:52px;
+
+        letter-spacing:-1px;
+
+    }
+
+
+    .brand-statement-content{
+
+        width:100%;
+
+    }
+
+}   
+
+/* ==========================================
+        CARD ENTRANCE ANIMATION
+========================================== */
+
+.brand-value{
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    animation:
+        brandCardIn .8s ease forwards;
+
+}
+
+
+.brand-value:nth-child(1){
+
+    animation-delay:.1s;
+
+}
+
+
+.brand-value:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+
+.brand-value:nth-child(3){
+
+    animation-delay:.3s;
+
+}
+
+
+.brand-value:nth-child(4){
+
+    animation-delay:.4s;
+
+}
+
+
+@keyframes brandCardIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   TAMBAHAN WARNA GRAYSCALE
+========================================== */
+
+.brand-values .statement-line {
+    background: #ffffff !important;
+}
+
+/* ==========================================
+   BRAND STATEMENT + IMAGE
+========================================== */
+
+.brand-statement{
+    display:grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap:70px;
+    align-items:center;
+    margin-top:15px;
+}
+
+
+/* IMAGE */
+
+.brand-statement-image{
+
+    position:relative;
+
+    height:620px;
+
+    overflow:hidden;
+
+    border:1px solid #3d3d3d;
+
+    background:#111;
+
+}
+
+
+.brand-statement-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    filter:grayscale(100%);
+
+    transition:filter .8s ease;
+
+}
+
+
+.brand-statement-image:hover img{
+
+    transform:none;
+
+}
+
+
+/* IMAGE LABEL */
+
+.brand-statement-image span{
+
+    position:absolute;
+
+    left:25px;
+
+    bottom:25px;
+
+    color:#fff;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    z-index:2;
+
+}
+
+
+/* IMAGE OVERLAY */
+
+
+
+/* TEXT AREA */
+
+.brand-statement-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+
+/* BIG TITLE */
+
+.brand-statement-title h2{
+
+    font-size:clamp(
+        55px,
+        6vw,
+        95px
+    );
+
+    line-height:.88;
+
+    margin-bottom:50px;
+
+}
+
+
+/* GREY TEXT */
+
+.brand-statement-title h2 span{
+
+    color:#777 !important;
+
+    transition:
+        color .4s ease;
+
+}
+
+
+.brand-statement-title h2:hover span{
+
+    color:#fff !important;
+
+}
+
+
+/* CONTENT */
+
+.brand-statement-content{
+
+    max-width:500px;
+
+}
+
+
+/* LINE */
+
+.brand-statement-content .statement-line{
+
+    width:70px;
+
+    height:2px;
+
+    background:#fff !important;
+
+    margin-bottom:35px;
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.brand-statement-content:hover .statement-line{
+
+    width:140px;
+
+}
+
+
+/* DESCRIPTION */
+
+.brand-statement-content p{
+
+    color:#999;
+
+    margin-bottom:35px;
+
+}
+
+
+/* BUTTON */
+
+.brand-statement-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    width:100%;
+
+    padding:18px 20px;
+
+    border:1px solid #555;
+
+    color:#fff;
+
+    transition:
+        .4s ease;
+
+}
+
+
+.brand-statement-btn:hover{
+
+    background:#fff;
+
+    color:#111;
+
+    border-color:#fff;
+
+    transform:translateX(8px);
+
+}
+
+@media(max-width:800px){
+
+    .brand-statement{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+        margin-top:70px;
+
+    }
+
+    .brand-statement-image{
+
+        height:550px;
+
+    }
+
+}
+
+/* ==========================================
+        360 MODEL VIEWER
+========================================== */
+
+.model-viewer {
+
+    position: relative;
+
+    cursor: grab;
+
+    user-select: none;
+
+}
+
+
+.model-viewer img {
+
+    cursor: grab;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+}
+
+
+/* ==========================================
+        ROTATE INDICATOR
+========================================== */
+
+.model-overlay {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 16px;
+
+    background: rgba(0,0,0,.65);
+
+    border: 1px solid #555;
+
+    color: #fff;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    pointer-events: none;
+
+    transition:
+        opacity .4s ease;
+
+}
+
+
+.rotate-arrow {
+
+    font-size: 18px;
+
+    color: #aaa;
+
+}
+
+/* ==========================================
+        360 MODEL VIDEO
+========================================== */
+
+/* ==========================================
+   360 MODEL VIDEO - MP4
+========================================== */
+
+.model-video {
+    position: relative;
+    height: 750px;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+}
+
+.model-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+
+    
+    mix-blend-mode: screen;
+}
+/* ==========================================
+   REMOVE VIDEO BLACK FRAME
+========================================== */
+
+
+.brand-statement-image.model-video {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden;
+}
+
+.model-video {
+    position: relative;
+    height: 620px;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+}
+
+.model-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* =====================================================
+   HERO - GRADIENT TRANSITION
+===================================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Gradasi dari gambar hero menuju section berikutnya */
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 220px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(23, 23, 23, 0) 0%,
+        rgba(23, 23, 23, 0.15) 25%,
+        rgba(23, 23, 23, 0.50) 55%,
+        rgba(23, 23, 23, 0.85) 80%,
+        #171717 100%
+    );
+
+    pointer-events: none;
+    z-index: 10;
+}
+
+
+/* Pastikan isi hero tetap berada di atas gradasi */
+.hero-container,
+.hero-prev,
+.hero-next,
+.hero-indicators {
+    position: relative;
+    z-index: 20;
+}

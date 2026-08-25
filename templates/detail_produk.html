@@ -1,0 +1,134 @@
+{% extends "base.html" %} {% block title %} {{ produk.nama }} | Seismic Waves {%
+endblock %} {% block page_css %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/detail.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<div class="detail-page">
+  <div class="detail-container">
+    <div class="detail-layout">
+      <!-- ================= GALLERY ================= -->
+      <div class="gallery">
+        <div class="main-image">
+          <img
+            id="mainImage"
+            src="{{ url_for('static', filename='pictures/produk/' + produk.folder + '/1.jpg') }}"
+            alt="{{ produk.nama }}"
+          />
+        </div>
+
+        <div class="thumb-grid">
+          {% for i in range(1,5) %}
+          <img
+            src="{{ url_for('static', filename='pictures/produk/' + produk.folder + '/' + i|string + '.jpg') }}"
+            class="thumb {% if i == 1 %}active{% endif %}"
+            alt="{{ produk.nama }} {{ i }}"
+          />
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- ================= PRODUCT INFO ================= -->
+      <div class="product-info">
+        <span class="category-badge"> {{ produk.kategori }} </span>
+
+        <h1>{{ produk.nama }}</h1>
+
+        <div class="price">
+          Rp{{ "{:,.0f}".format(produk.harga).replace(",",".") }}
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="description">{{ produk.deskripsi }}</p>
+
+        <div class="divider"></div>
+
+        <!-- ================= FORM ADD TO CART ================= -->
+        <form
+          action="{{ url_for('add_to_cart') }}"
+          method="POST"
+          id="addToCartForm"
+        >
+          <!-- ID Produk -->
+          <input type="hidden" name="produk_id" value="{{ produk.id }}" />
+
+          <!-- Ukuran -->
+          <div class="option-group">
+            <h3>Pilih ukuran</h3>
+
+            <div class="size-options">
+              <button type="button" class="size-btn active" data-size="S">
+                S
+              </button>
+
+              <button type="button" class="size-btn" data-size="M">M</button>
+
+              <button type="button" class="size-btn" data-size="L">L</button>
+
+              <button type="button" class="size-btn" data-size="XL">XL</button>
+
+              <button type="button" class="size-btn" data-size="XXL">
+                XXL
+              </button>
+            </div>
+
+            <input type="hidden" name="size" id="selectedSize" value="S" />
+          </div>
+
+          <!-- Jumlah -->
+          <div class="option-group">
+            <h3>Jumlah</h3>
+
+            <div class="qty-box">
+              <button type="button" id="minusBtn">−</button>
+
+              <input id="qty" type="text" value="1" readonly />
+
+              <button type="button" id="plusBtn" data-stock="{{ produk.stok }}">
+                +
+              </button>
+            </div>
+
+            <input type="hidden" name="qty" id="selectedQty" value="1" />
+          </div>
+
+          <!-- Tombol -->
+          <div class="action-buttons">
+            <button type="submit" class="cart-btn" id="addToCartBtn">
+              <i class="fa-solid fa-cart-shopping"></i>
+              Add to Cart
+            </button>
+
+            <button type="button" class="buy-btn" id="buyNowBtn">
+              Buy Now
+            </button>
+          </div>
+        </form>
+
+        <!-- ================= FORM BUY NOW ================= -->
+        <form
+          action="{{ url_for('buy_now') }}"
+          method="POST"
+          id="buyNowForm"
+          style="display: none"
+        >
+          <input type="hidden" name="produk_id" value="{{ produk.id }}" />
+
+          <input type="hidden" name="size" id="buyNowSize" value="S" />
+
+          <input type="hidden" name="qty" id="buyNowQty" value="1" />
+        </form>
+
+        <div class="stock-info">Stock tersedia: {{ produk.stok }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/detail.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard Admin | Seismic Waves</title>
+
+    <!-- CSS DASHBOARD ADMIN -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin-dashboard.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="admin-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <div class="brand-logo">
+
+                <span>SEISMIC</span>
+
+                <small>WAVES</small>
+
+            </div>
+
+            <p>
+                ADMIN PANEL
+            </p>
+
+        </div>
+
+
+            <!-- MENU -->
+            <nav class="sidebar-menu">
+
+                <div class="menu-label">
+                    MENU UTAMA
+                </div>
+
+                <!-- DASHBOARD -->
+                <a
+                    href="{{ url_for('admin_dashboard') }}"
+                    class="menu-item active"
+                >
+                    <span class="menu-icon">◈</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <!-- PRODUK -->
+                <a
+                    href="{{ url_for('admin_produk') }}"
+                    class="menu-item"
+                >
+                    <span class="menu-icon">□</span>
+                    <span>Produk</span>
+                </a>
+
+                <!-- PESANAN -->
+                <a
+                    href="{{ url_for('admin_pesanan') }}"
+                    class="menu-item"
+                >
+                    <span class="menu-icon">≡</span>
+                    <span>Pesanan</span>
+                </a>
+
+                <!-- PELANGGAN -->
+                <a
+                    href="{{ url_for('admin_pelanggan') }}"
+                    class="menu-item"
+                >
+                    <span class="menu-icon">○</span>
+                    <span>Pelanggan</span>
+                </a>
+
+            </nav>
+
+        <!-- =================================================
+             SIDEBAR BOTTOM
+        ================================================== -->
+
+        <div class="sidebar-bottom">
+
+
+            <!-- LOGOUT -->
+
+            <a
+                href="{{ url_for('admin_logout') }}"
+                class="website-link"
+            >
+
+                <span>
+                    ⇥
+                </span>
+
+                Logout
+
+            </a>
+
+
+            <!-- ADMIN PROFILE -->
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    {{ admin_nama[0]|upper }}
+                </div>
+
+
+                <div class="admin-info">
+
+                    <strong>
+                        {{ admin_nama }}
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <div class="page-heading">
+
+                <div class="breadcrumb">
+                    ADMIN / DASHBOARD
+                </div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Kelola dan pantau toko Seismic Waves
+                    dari satu tempat.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="status">
+
+                    <span class="status-dot"></span>
+
+                    Sistem Aktif
+
+                </div>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             FLASH MESSAGE
+        ================================================== -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div
+                            class="flash flash-{{ category }}"
+                        >
+
+                            <span class="flash-icon">
+
+                                {% if category == "success" %}
+                                    ✓
+                                {% else %}
+                                    !
+                                {% endif %}
+
+                            </span>
+
+                            <span>
+                                {{ message }}
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="stats-grid">
+
+
+            <!-- TOTAL PRODUK -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        TOTAL PRODUK
+                    </span>
+
+                    <span class="stat-icon">
+                        □
+                    </span>
+
+                </div>
+
+                <div class="stat-value">
+                    {{ total_produk }}
+                </div>
+
+                <div class="stat-description">
+                    Produk tersedia di katalog
+                </div>
+
+            </div>
+
+
+
+            <!-- TOTAL STOK -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        TOTAL STOK
+                    </span>
+
+                    <span class="stat-icon">
+                        ◫
+                    </span>
+
+                </div>
+
+                <div class="stat-value">
+                    {{ total_stok }}
+                </div>
+
+                <div class="stat-description">
+                    Total unit produk
+                </div>
+
+            </div>
+
+
+
+            <!-- KATEGORI -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        KATEGORI
+                    </span>
+
+                    <span class="stat-icon">
+                        #
+                    </span>
+
+                </div>
+
+                <div class="stat-value">
+                    {{ total_kategori }}
+                </div>
+
+                <div class="stat-description">
+                    Kategori produk aktif
+                </div>
+
+            </div>
+
+
+
+            <!-- STOK MENIPIS -->
+
+            <div class="stat-card warning-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-label">
+                        STOK MENIPIS
+                    </span>
+
+                    <span class="stat-icon warning-icon">
+                        !
+                    </span>
+
+                </div>
+
+                <div class="stat-value">
+                    {{ produk_stok_menipis }}
+                </div>
+
+                <div class="stat-description">
+                    Produk dengan stok ≤ 5
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAIN GRID
+        ================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- =================================================
+                 PRODUK TERBARU
+            ================================================== -->
+
+            <div class="panel products-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            INVENTORY
+                        </span>
+
+                        <h2>
+                            Produk Terbaru
+                        </h2>
+
+                    </div>
+
+
+                    <a
+                        href="{{ url_for('admin_produk') }}"
+                        class="panel-link"
+                    >
+                        Lihat Semua →
+                    </a>
+
+                </div>
+
+
+
+                <!-- TABLE -->
+
+                <div class="table-wrapper">
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    PRODUK
+                                </th>
+
+                                <th>
+                                    KATEGORI
+                                </th>
+
+                                <th>
+                                    HARGA
+                                </th>
+
+                                <th>
+                                    STOK
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            {% for produk in produk_terbaru %}
+
+
+                            <tr>
+
+
+                                <!-- =================================
+                                     PRODUK + FOTO
+                                ================================== -->
+
+                                <td>
+
+                                    <div class="product-name">
+
+
+                                        <!-- FOTO PRODUK -->
+
+                                        <div class="product-mini">
+
+                                            <img
+                                                src="{{ url_for(
+                                                    'static',
+                                                    filename='pictures/produk/' + produk.folder + '/1.jpg'
+                                                ) }}"
+                                                alt="{{ produk.nama }}"
+                                                class="product-image"
+                                                onerror="this.style.display='none'; this.parentElement.classList.add('image-error');"
+                                            >
+
+                                            <!-- Jika foto tidak ditemukan -->
+
+                                            <span class="product-fallback">
+                                                {{ produk.nama[0]|upper }}
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- NAMA PRODUK -->
+
+                                        <span>
+                                            {{ produk.nama }}
+                                        </span>
+
+
+                                    </div>
+
+                                </td>
+
+
+
+                                <!-- KATEGORI -->
+
+                                <td>
+
+                                    <span class="category-badge">
+
+                                        {{ produk.kategori }}
+
+                                    </span>
+
+                                </td>
+
+
+
+                                <!-- HARGA -->
+
+                                <td>
+
+                                    <span class="price">
+
+                                        Rp
+                                        {{ "{:,.0f}".format(produk.harga).replace(",", ".") }}
+
+                                    </span>
+
+                                </td>
+
+
+
+                                <!-- STOK -->
+
+                                <td>
+
+
+                                    {% if produk.stok <= 5 %}
+
+                                        <span class="stock-badge stock-low">
+
+                                            <span class="stock-dot"></span>
+
+                                            {{ produk.stok }}
+
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="stock-badge stock-safe">
+
+                                            <span class="stock-dot"></span>
+
+                                            {{ produk.stok }}
+
+                                        </span>
+
+                                    {% endif %}
+
+
+                                </td>
+
+
+                            </tr>
+
+
+                            {% else %}
+
+
+                            <tr>
+
+                                <td
+                                    colspan="4"
+                                    class="empty"
+                                >
+
+                                    Belum ada produk.
+
+                                </td>
+
+                            </tr>
+
+
+                            {% endfor %}
+
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 QUICK ACTION
+            ================================================== -->
+
+            <div class="panel quick-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-eyebrow">
+                            SHORTCUT
+                        </span>
+
+                        <h2>
+                            Quick Action
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quick-action">
+
+
+                    <!-- TAMBAH PRODUK -->
+
+                    <a
+                        href="{{ url_for('admin_tambah_produk') }}"
+                        class="quick-item primary"
+                    >
+
+                        <div class="quick-icon">
+                            +
+                        </div>
+
+                        <div class="quick-content">
+
+                            <strong>
+                                Tambah Produk
+                            </strong>
+
+                            <span>
+                                Tambahkan produk baru
+                            </span>
+
+                        </div>
+
+                        <span class="quick-arrow">
+                            →
+                        </span>
+
+                    </a>
+
+
+
+                    <!-- KELOLA PRODUK -->
+
+                    <a
+                        href="{{ url_for('admin_produk') }}"
+                        class="quick-item"
+                    >
+
+                        <div class="quick-icon">
+                            □
+                        </div>
+
+                        <div class="quick-content">
+
+                            <strong>
+                                Kelola Produk
+                            </strong>
+
+                            <span>
+                                Edit dan atur katalog
+                            </span>
+
+                        </div>
+
+                        <span class="quick-arrow">
+                            →
+                        </span>
+
+                    </a>
+
+
+
+                    <!-- KEMBALI KE WEBSITE -->
+
+                    <a
+                        href="{{ url_for('home') }}"
+                        class="quick-item"
+                    >
+
+                        <div class="quick-icon">
+                            ↗
+                        </div>
+
+                        <div class="quick-content">
+
+                            <strong>
+                                Kembali ke Website
+                            </strong>
+
+                            <span>
+                                Buka halaman utama toko
+                            </span>
+
+                        </div>
+
+                        <span class="quick-arrow">
+                            →
+                        </span>
+
+                    </a>
+
+
+
+                    <!-- PESANAN -->
+
+                   
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-footer">
+
+            <span>
+                SEISMIC WAVES
+            </span>
+
+            <span>
+                ADMIN PANEL · 2026
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>

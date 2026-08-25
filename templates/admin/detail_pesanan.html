@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Detail Pesanan | Admin Seismic Waves
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin-pesanan.css') }}"
+    >
+
+    <style>
+
+    /* =====================================================
+    ADMIN DETAIL PESANAN
+    STYLE SELARAS DENGAN ADMIN DASHBOARD
+    ===================================================== */
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+
+        font-family: 'Poppins', sans-serif;
+
+        background: #f5f5f3;
+
+        color: #111;
+
+    }
+
+
+    /* =====================================================
+    MAIN CONTAINER
+    ===================================================== */
+
+    .detail-container {
+
+        width: calc(100% - 80px);
+
+        max-width: 1280px;
+
+        margin: 0 auto;
+
+        padding: 45px 0 70px;
+
+    }
+
+
+    /* =====================================================
+    BACK BUTTON
+    ===================================================== */
+
+    .back-button {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        margin-bottom: 25px;
+
+        color: #555;
+
+        text-decoration: none;
+
+        font-size: 13px;
+
+        font-weight: 500;
+
+        transition: .25s ease;
+
+    }
+
+    .back-button:hover {
+
+        color: #111;
+
+        transform: translateX(-3px);
+
+    }
+
+
+    /* =====================================================
+    HEADER CARD
+    ===================================================== */
+
+    .detail-container > .detail-card:first-of-type {
+
+        margin-bottom: 25px;
+
+    }
+
+
+    /* =====================================================
+    CARD
+    ===================================================== */
+
+    .detail-card {
+
+        background: #fff;
+
+        color: #111;
+
+        border: 1px solid #e3e3e1;
+
+        border-radius: 15px;
+
+        padding: 28px 32px;
+
+        box-shadow: 0 4px 18px rgba(0,0,0,.035);
+
+    }
+
+
+    /* =====================================================
+    HEADINGS
+    ===================================================== */
+
+    .detail-card h1 {
+
+        margin: 0 0 25px;
+
+        font-family: 'Oswald', sans-serif;
+
+        font-size: 34px;
+
+        font-weight: 600;
+
+        letter-spacing: .5px;
+
+        color: #111;
+
+    }
+
+    .detail-card h2 {
+
+        margin: 0 0 22px;
+
+        font-family: 'Poppins', sans-serif;
+
+        font-size: 20px;
+
+        font-weight: 600;
+
+        color: #111;
+
+    }
+
+
+    /* =====================================================
+    INFO ROW
+    ===================================================== */
+
+    .info-row {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        gap: 30px;
+
+        padding: 14px 0;
+
+        border-bottom: 1px solid #eeeeec;
+
+    }
+
+    .info-row:last-child {
+
+        border-bottom: none;
+
+    }
+
+
+    .info-label {
+
+        color: #999;
+
+        font-size: 13px;
+
+        font-weight: 500;
+
+        letter-spacing: .3px;
+
+    }
+
+
+    .info-value {
+
+        color: #222;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        text-align: right;
+
+        max-width: 65%;
+
+    }
+
+
+    /* =====================================================
+    DETAIL GRID
+    ===================================================== */
+
+    .detail-grid {
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 25px;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    /* =====================================================
+    STATUS
+    ===================================================== */
+
+    .status-badge {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 7px 13px;
+
+        border-radius: 20px;
+
+        font-size: 11px;
+
+        font-weight: 600;
+
+        letter-spacing: .3px;
+
+        white-space: nowrap;
+
+    }
+
+
+    /* Diproses */
+
+    .status-process {
+
+        background: #fff4d8;
+
+        color: #9a6a00;
+
+    }
+
+
+    /* Dikirim */
+
+    .status-shipped {
+
+        background: #e8f0ff;
+
+        color: #315ca8;
+
+    }
+
+
+    /* Selesai */
+
+    .status-done {
+
+        background: #e7f5eb;
+
+        color: #357348;
+
+    }
+
+
+    /* =====================================================
+    PRODUCT TABLE
+    ===================================================== */
+
+    .table-scroll {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+    }
+
+
+    .product-table {
+
+        width: 100%;
+
+        border-collapse: collapse;
+
+        min-width: 650px;
+
+    }
+
+
+    .product-table th {
+
+        padding: 15px 12px;
+
+        text-align: left;
+
+        border-bottom: 1px solid #dededc;
+
+        color: #999;
+
+        font-size: 11px;
+
+        font-weight: 600;
+
+        letter-spacing: 1px;
+
+        text-transform: uppercase;
+
+    }
+
+
+    .product-table td {
+
+        padding: 17px 12px;
+
+        border-bottom: 1px solid #eeeeec;
+
+        color: #333;
+
+        font-size: 13px;
+
+    }
+
+
+    .product-table tbody tr:last-child td {
+
+        border-bottom: none;
+
+    }
+
+
+    .product-table tbody tr {
+
+        transition: background .2s ease;
+
+    }
+
+
+    .product-table tbody tr:hover {
+
+        background: #fafafa;
+
+    }
+
+
+    .product-name {
+
+        color: #111 !important;
+
+        font-weight: 600 !important;
+
+    }
+
+
+    /* =====================================================
+    TOTAL
+    ===================================================== */
+
+    .total-box {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        margin-top: 20px;
+
+        padding-top: 22px;
+
+        border-top: 1px solid #222;
+
+        font-size: 18px;
+
+        font-weight: 600;
+
+    }
+
+
+    .total-box span:last-child {
+
+        font-family: 'Oswald', sans-serif;
+
+        font-size: 24px;
+
+        letter-spacing: .5px;
+
+    }
+
+
+    /* =====================================================
+    REMOVE BR DEFAULT SPACING
+    ===================================================== */
+
+    .detail-container > br {
+
+        display: none;
+
+    }
+
+
+    /* =====================================================
+    RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1000px) {
+
+        .detail-container {
+
+            width: calc(100% - 40px);
+
+        }
+
+    }
+
+
+    @media (max-width: 768px) {
+
+        .detail-container {
+
+            width: calc(100% - 30px);
+
+            padding: 30px 0 50px;
+
+        }
+
+
+        .detail-grid {
+
+            grid-template-columns: 1fr;
+
+            gap: 18px;
+
+        }
+
+
+        .detail-card {
+
+            padding: 23px 20px;
+
+        }
+
+
+        .detail-card h1 {
+
+            font-size: 30px;
+
+        }
+
+
+        .info-row {
+
+            align-items: flex-start;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+        }
+
+
+        .info-value {
+
+            max-width: 100%;
+
+            text-align: left;
+
+        }
+
+
+        .total-box {
+
+            font-size: 16px;
+
+        }
+
+
+        .total-box span:last-child {
+
+            font-size: 21px;
+
+        }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+        .detail-container {
+
+            width: calc(100% - 20px);
+
+        }
+
+
+        .detail-card {
+
+            padding: 20px 16px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .detail-card h1 {
+
+            font-size: 27px;
+
+        }
+
+
+        .product-table th,
+        .product-table td {
+
+            padding: 13px 9px;
+
+        }
+
+    }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="detail-container">
+
+    <!-- =========================
+         KEMBALI
+    ========================== -->
+
+    <a
+        href="{{ url_for('admin_pesanan') }}"
+        class="back-button"
+    >
+        ← Kembali ke Pesanan
+    </a>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <div class="detail-card">
+
+        <h1>
+            Detail Pesanan
+        </h1>
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Kode Pesanan
+            </span>
+
+            <span class="info-value">
+                KODE: {{ pesanan.kode_pesanan }}
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Tanggal Pesanan
+            </span>
+
+            <span class="info-value">
+
+                {% if pesanan.tanggal_pesanan %}
+
+                    {{ pesanan.tanggal_pesanan.strftime('%d %B %Y %H:%M') }}
+
+                {% else %}
+
+                    -
+
+                {% endif %}
+
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Status
+            </span>
+
+            <span class="info-value">
+
+                {% if pesanan.status_pesanan == "Diproses" %}
+
+                    <span class="status-badge status-process">
+                        Diproses
+                    </span>
+
+                {% elif pesanan.status_pesanan == "Diserahkan ke Ekspedisi" %}
+
+                    <span class="status-badge status-shipped">
+                        Dikirim
+                    </span>
+
+                {% else %}
+
+                    <span class="status-badge status-done">
+                        Selesai
+                    </span>
+
+                {% endif %}
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <br>
+
+
+    <div class="detail-grid">
+
+
+        <!-- =========================
+             DATA PELANGGAN
+        ========================== -->
+
+        <div class="detail-card">
+
+            <h2>
+                Informasi Pelanggan
+            </h2>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Nama
+                </span>
+
+                <span class="info-value">
+                    NAMA: {{ pesanan.pelanggan.nama }}
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Email
+                </span>
+
+                <span class="info-value">
+                    EMAIL: {{ pesanan.pelanggan.email }}
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    No. HP
+                </span>
+
+                <span class="info-value">
+                    {{ pesanan.pelanggan.no_hp }}
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Alamat
+                </span>
+
+                <span class="info-value">
+
+                    {{ pesanan.pelanggan.alamat }}
+
+                    {% if pesanan.pelanggan.kota %}
+                        , {{ pesanan.pelanggan.kota }}
+                    {% endif %}
+
+                    {% if pesanan.pelanggan.provinsi %}
+                        , {{ pesanan.pelanggan.provinsi }}
+                    {% endif %}
+
+                    {% if pesanan.pelanggan.kode_pos %}
+                        {{ pesanan.pelanggan.kode_pos }}
+                    {% endif %}
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             PEMBAYARAN
+        ========================== -->
+
+        <div class="detail-card">
+
+            <h2>
+                Informasi Pembayaran
+            </h2>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Metode Pembayaran
+                </span>
+
+                <span class="info-value">
+
+                    {{ pesanan.metode_pembayaran }}
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Status Pesanan
+                </span>
+
+                <span class="info-value">
+
+                    {{ pesanan.status_pesanan }}
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Ekspedisi
+                </span>
+
+                <span class="info-value">
+
+                    {{ pesanan.ekspedisi or '-' }}
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Nomor Resi
+                </span>
+
+                <span class="info-value">
+
+                    {{ pesanan.no_resi or '-' }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <br>
+
+
+    <!-- =========================
+         PRODUK
+    ========================== -->
+
+    <div class="detail-card">
+
+        <h2>
+            Produk yang Dibeli
+        </h2>
+
+
+        <div class="table-scroll">
+
+            <table class="product-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Produk
+                        </th>
+
+                        <th>
+                            Ukuran
+                        </th>
+
+                        <th>
+                            Harga
+                        </th>
+
+                        <th>
+                            Jumlah
+                        </th>
+
+                        <th>
+                            Subtotal
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for detail in pesanan.detail_pesanan %}
+
+                    <tr>
+
+                        <td class="product-name">
+
+                            {{ detail.produk.nama }}
+
+                        </td>
+
+                        <td>
+
+                            {{ detail.ukuran or '-' }}
+
+                        </td>
+
+                        <td>
+
+                            Rp {{ "{:,.0f}".format(detail.harga).replace(",", ".") }}
+
+                        </td>
+
+                        <td>
+
+                            {{ detail.jumlah }}
+
+                        </td>
+
+                        <td>
+
+                            Rp {{ "{:,.0f}".format(detail.subtotal).replace(",", ".") }}
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+
+                        <td
+                            colspan="5"
+                            style="text-align:center;"
+                        >
+
+                            Tidak ada detail produk.
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="total-box">
+
+            <span>
+                Total Pesanan
+            </span>
+
+            <span>
+
+                Rp {{ "{:,.0f}".format(
+                    pesanan.total_harga
+                ).replace(",", ".") }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

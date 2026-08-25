@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Login | Seismic Waves</title>
+
+    <!-- CSS KHUSUS LOGIN ADMIN -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin-login.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         LOGIN WRAPPER
+    ====================================================== -->
+
+    <div class="login-wrapper">
+
+
+        <!-- =================================================
+             BAGIAN KIRI / BRAND
+        ================================================== -->
+
+        <section class="brand-side">
+
+            <div class="brand-content">
+
+
+                <h1 class="brand-title">
+                    SEISMIC
+                </h1>
+
+
+                <div class="brand-waves">
+                    WAVES
+                </div>
+
+
+                <div class="brand-line"></div>
+
+
+                <p class="brand-subtitle">
+                    ADMIN PANEL
+                </p>
+
+
+                <p class="brand-description">
+
+                    Kelola produk dan aktivitas
+                    toko Seismic Waves melalui
+                    dashboard administrator.
+
+                </p>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BAGIAN KANAN / FORM LOGIN
+        ================================================== -->
+
+        <section class="form-side">
+
+
+            <!-- HEADER -->
+
+            <div class="form-header">
+
+                <h2>
+                    Welcome Back
+                </h2>
+
+                <p>
+                    Silakan login untuk melanjutkan
+                    ke Dashboard Admin.
+                </p>
+
+            </div>
+
+
+
+            <!-- DIVIDER -->
+
+            <div class="form-divider">
+
+                SEISMIC WAVES
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FLASH MESSAGE DARI FLASK
+            ================================================== -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% if messages %}
+
+                    {% for category, message in messages %}
+
+                        <div class="alert">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+
+
+            <!-- =================================================
+                 FORM LOGIN
+            ================================================== -->
+
+            <form
+                method="POST"
+                autocomplete="off"
+            >
+
+
+                <!-- USERNAME -->
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Masukkan username"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="password-input"
+                            placeholder="Masukkan password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+
+                        <!-- TOMBOL MATA -->
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="togglePassword"
+                            aria-label="Tampilkan password"
+                            title="Tampilkan password"
+                        >
+
+                            <span class="eye-icon"></span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     REMEMBER ME
+                ================================================== -->
+
+                <div class="form-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                        >
+
+                        <span>
+                            Ingat saya
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     TOMBOL LOGIN
+                ================================================== -->
+
+                <button
+                    type="submit"
+                    class="btn-login"
+                >
+
+                    <span>
+                        LOGIN ADMIN
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =================================================
+                 KEMBALI KE WEBSITE
+            ================================================== -->
+
+            <div class="back-home">
+
+                <a href="{{ url_for('home') }}">
+
+                    ← &nbsp; Kembali ke Website
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div class="footer">
+
+        © 2026 Seismic Waves. All rights reserved.
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT MATA PASSWORD
+    ====================================================== -->
+
+    <script>
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+
+        togglePassword.addEventListener(
+            "click",
+            function () {
+
+                /*
+                 * Jika password sedang tersembunyi
+                 */
+
+                if (
+                    passwordInput.type === "password"
+                ) {
+
+                    passwordInput.type = "text";
+
+                    togglePassword.classList.add(
+                        "active"
+                    );
+
+                    togglePassword.setAttribute(
+                        "aria-label",
+                        "Sembunyikan password"
+                    );
+
+                    togglePassword.setAttribute(
+                        "title",
+                        "Sembunyikan password"
+                    );
+
+                }
+
+                /*
+                 * Jika password sedang terlihat
+                 */
+
+                else {
+
+                    passwordInput.type = "password";
+
+                    togglePassword.classList.remove(
+                        "active"
+                    );
+
+                    togglePassword.setAttribute(
+                        "aria-label",
+                        "Tampilkan password"
+                    );
+
+                    togglePassword.setAttribute(
+                        "title",
+                        "Tampilkan password"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

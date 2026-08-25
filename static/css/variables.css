@@ -1,0 +1,70 @@
+:root{
+
+/* =====================================
+   PRIMARY PALETTE
+===================================== */
+
+--color-background: #ECECEC;
+--color-section: #CFCECC;
+--color-surface: #3B3C3E;
+--color-card: #FFFFFF;
+--color-dark: #1C1B1C;
+--color-footer: #252525;
+
+--color-border: #D8D8D8;
+--color-border-hover: #9C9C9C;
+
+/* =====================================
+   BUTTON
+===================================== */
+
+--button-primary: #444548;
+--button-hover: #5E6065;
+--button-active: #2B2C2F;
+
+--button-text: #FFFFFF;
+
+/* =====================================
+   TYPOGRAPHY
+===================================== */
+
+--heading: #202020;
+--body: #444444;
+--secondary: #7B7B7B;
+--disabled: #B8B8B8;
+
+/* =====================================
+   ACCENT
+===================================== */
+
+--accent: #5F7D95;
+--accent-hover: #7394AE;
+
+/* =====================================
+   STATUS
+===================================== */
+
+--success: #3FA46A;
+--warning: #D9A441;
+--danger: #C84545;
+--info: #5F7D95;
+
+/* =====================================
+   SHADOW
+===================================== */
+
+--shadow:
+0 10px 25px rgba(0,0,0,.08);
+
+--shadow-light:
+0 4px 10px rgba(0,0,0,.12);
+
+/* =====================================
+   RADIUS
+===================================== */
+
+--radius-sm:8px;
+--radius-md:12px;
+--radius-lg:18px;
+
+}

@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block title %}
+Cart | Seismic Waves
+{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="cart-page">
+<div class="container">
+
+    <h1 class="cart-title">Your Cart</h1>
+
+    {% if cart_items %}
+
+    <!-- ================= TABLE HEADER ================= -->
+
+    <div class="cart-header">
+
+        <div>Product</div>
+
+        <div>Price</div>
+
+        <div>Quantity</div>
+
+        <div>Total</div>
+
+    </div>
+
+    <!-- ================= CART ITEMS ================= -->
+
+    <div class="cart-list">
+
+        {% for item in cart_items %}
+
+        <div class="cart-row">
+
+            <!-- Product -->
+
+            <div class="cart-product">
+
+                <div class="cart-image">
+
+                    <img
+                        src="{{ url_for('static', filename='pictures/produk/' + item.produk.folder + '/1.jpg') }}"
+                        alt="{{ item.produk.nama }}"
+                    >
+
+                </div>
+
+                <div class="cart-details">
+
+                    <h3>{{ item.produk.nama }}</h3>
+
+                    <p>{{ item.ukuran }}</p>
+
+                    <a
+                        href="{{ url_for('remove_cart_item', cart_id=item.id) }}"
+                        class="remove-btn"
+                    >
+
+                        <i class="fa-regular fa-trash-can"></i>
+
+                        Remove
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Price -->
+
+            <div class="cart-price">
+
+                Rp{{ "{:,.0f}".format(item.produk.harga).replace(",",".") }}
+
+            </div>
+
+            <!-- Quantity -->
+
+            <div class="cart-quantity">
+
+                <form
+                    action="{{ url_for('update_cart') }}"
+                    method="POST"
+                    class="qty-form"
+                >
+
+                    <input
+                        type="hidden"
+                        name="cart_id"
+                        value="{{ item.id }}"
+                    >
+
+                    <div class="qty-box">
+
+                        <button
+                            type="button"
+                            class="qty-minus"
+                        >
+                            −
+                        </button>
+
+                        <input
+                            type="text"
+                            name="jumlah"
+                            value="{{ item.jumlah }}"
+                            readonly
+                        >
+
+                        <button
+                            type="button"
+                            class="qty-plus"
+                            data-stock="{{ item.produk.stok }}"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- Total -->
+
+            <div class="cart-total">
+
+                Rp{{ "{:,.0f}".format(item.produk.harga * item.jumlah).replace(",",".") }}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- ================= FOOTER ACTION ================= -->
+
+    <div class="cart-bottom">
+
+        <a
+            href="{{ url_for('catalog') }}"
+            class="continue-btn"
+        >
+
+            <i class="fa-solid fa-chevron-left"></i>
+
+            Continue Shopping
+
+        </a>
+
+        <!-- Order Summary -->
+
+        <div class="summary-card">
+
+            <h3>Order Summary</h3>
+
+            <div class="summary-row">
+
+                <span>Subtotal</span>
+
+                <span>
+                    Rp{{ "{:,.0f}".format(total).replace(",",".") }}
+                </span>
+
+            </div>
+
+            <div class="summary-row">
+
+                <span>Shipping</span>
+
+                <span>—</span>
+
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-total">
+
+                <span>Total</span>
+
+                <strong>
+                    Rp{{ "{:,.0f}".format(total).replace(",",".") }}
+                </strong>
+
+            </div>
+
+            <a
+                href="{{ url_for('checkout') }}"
+                class="checkout-btn"
+            >
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Proceed to Checkout
+
+            </a>
+
+        </div>
+
+    </div>
+
+    {% else %}
+
+    <!-- ================= EMPTY CART ================= -->
+
+    <div class="empty-cart">
+
+        <h2>Your cart is empty</h2>
+
+        <a
+            href="{{ url_for('catalog') }}"
+            class="continue-btn"
+        >
+            Continue Shopping
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+{% endblock %}

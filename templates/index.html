@@ -1,0 +1,370 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home - Seismic Waves
+{% endblock %}
+
+
+<!-- =====================================================
+     PAGE SPECIFIC CSS
+===================================================== -->
+
+{% block page_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/hero.css') }}"
+>
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/product.css') }}"
+>
+
+{% endblock %}
+
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+{% block content %}
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+    <!-- ================= BACKGROUND SLIDER ================= -->
+
+    <div class="hero-slider">
+
+        <div class="hero-track">
+
+
+            <!-- HERO 1 -->
+
+            <div class="hero-slide">
+
+                <img
+                    src="{{ url_for('static', filename='pictures/hero 1.png') }}"
+                    alt="Seismic Waves Hero 1"
+                >
+
+            </div>
+
+
+            <!-- HERO 2 -->
+
+            <div class="hero-slide">
+
+                <img
+                    src="{{ url_for('static', filename='pictures/hero 2.png') }}"
+                    alt="Seismic Waves Hero 2"
+                >
+
+            </div>
+
+
+            <!-- HERO 3 -->
+
+            <div class="hero-slide">
+
+                <img
+                    src="{{ url_for('static', filename='pictures/hero 3.png') }}"
+                    alt="Seismic Waves Hero 3"
+                >
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= OVERLAY ================= -->
+
+    <div class="hero-overlay"></div>
+
+
+
+    <!-- ================= HERO CONTENT ================= -->
+
+    <div class="hero-container">
+
+        <div class="hero-content">
+
+
+            <span class="hero-subtitle">
+            </span>
+
+
+            <h1>
+
+                DISRUPT
+
+                <br>
+
+                THE
+
+                <br>
+
+                STANDARD
+
+            </h1>
+
+
+            <p>
+            Seismic Waves presents a premium streetwear collection 
+            with modern designs, exceptional comfort, and versatile style 
+            for everyday wear. 
+            </p>
+
+
+            <div class="hero-button">
+
+                <a
+                    href="{{ url_for('catalog') }}"
+                    class="btn"
+                >
+
+                    Shop Now
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= PREVIOUS ================= -->
+
+    <button
+        type="button"
+        class="hero-prev"
+        aria-label="Previous slide"
+    >
+
+        <i class="fa-solid fa-chevron-left"></i>
+
+    </button>
+
+
+
+    <!-- ================= NEXT ================= -->
+
+    <button
+        type="button"
+        class="hero-next"
+        aria-label="Next slide"
+    >
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+    </button>
+
+
+
+    <!-- ================= INDICATORS ================= -->
+
+    <div class="hero-indicators">
+
+        <span class="indicator active"></span>
+
+        <span class="indicator"></span>
+
+        <span class="indicator"></span>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     BEST SELLER
+===================================================== -->
+
+<section class="best-seller" id="best-seller">
+
+<div class="container">
+
+    <!-- ================= SECTION HEADER ================= -->
+
+    <div class="section-header reveal fade-up">
+
+        <div class="section-title">
+
+            <h2>BEST SELLER</h2>
+
+            <p>
+                Discover our most popular streetwear collection.
+            </p>
+
+        </div>
+
+        <a href="{{ url_for('catalog') }}" class="view-all">
+
+            View All
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+    <!-- ================= PRODUCT GRID ================= -->
+
+    <div class="product-grid">
+
+        {% for produk in produk_home %}
+
+        <div class="product-card reveal slide-up">
+
+            <div class="product-image">
+
+                <img
+                    src="{{ url_for('static', filename='pictures/produk/' + produk.folder + '/1.jpg') }}"
+                    alt="{{ produk.nama }}"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>{{ produk.nama }}</h3>
+
+                <div class="price">
+
+                    <span class="new">
+                        Rp{{ "{:,.0f}".format(produk.harga).replace(",",".") }}
+                    </span>
+
+                </div>
+
+                <a
+                    href="{{ url_for('detail_produk', id=produk.id) }}"
+                    class="product-btn"
+                >
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    View Detail
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHAT WE BELIEVE
+===================================================== -->
+
+<section class="brand-values">
+
+        <div class="brand-statement">
+        <div class="brand-statement-image model-video">
+
+    <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+    >
+        <source
+            src="{{ url_for('static', filename='pictures/video home.mp4') }}"
+            type="video/mp4"
+        >
+    </video>
+
+</div>
+
+
+    <!-- TEXT -->
+    <div class="brand-statement-info">
+
+        <div class="brand-statement-title">
+
+            <h2>
+                DON'T FOLLOW<br>
+                <span>THE STANDARD.</span><br>
+                DISRUPT IT.
+            </h2>
+
+        </div>
+
+
+        <div class="brand-statement-content">
+
+            <div class="statement-line"></div>
+
+            <p>
+                Streetwear made for those
+                who refuse to blend in.
+                Find your own wave.
+            </p>
+
+            <a
+                href="{{ url_for('catalog') }}"
+                class="brand-statement-btn"
+            >
+                <span>SHOP THE COLLECTION</span>
+                <span class="btn-arrow">↗</span>
+            </a>
+
+        </div>
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}
+
+
+
+<!-- =====================================================
+     PAGE JAVASCRIPT
+===================================================== -->
+
+{% block scripts %}
+
+<script
+    src="{{ url_for('static', filename='js/script.js') }}"
+>
+</script>
+
+<script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+
+{% endblock %}

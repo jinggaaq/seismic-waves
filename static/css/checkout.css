@@ -1,0 +1,434 @@
+/* ==========================================
+CHECKOUT PAGE - SEISMIC WAVES
+========================================== */
+
+.checkout-page{
+background:#080808;
+color:#fff;
+padding:110px 0 70px;
+}
+
+.checkout-container{
+width:100%;
+max-width:1320px;
+margin:0 auto;
+padding:0 40px;
+}
+
+/* ==========================================
+HEADER
+========================================== */
+
+.checkout-header{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+margin-bottom:40px;
+}
+
+.checkout-header h1{
+font-family:'Oswald',sans-serif;
+font-size:68px;
+font-weight:500;
+margin:0;
+color:#fff;
+}
+
+.checkout-steps{
+display:flex;
+gap:24px;
+}
+
+.checkout-steps span{
+color:#666;
+font-size:13px;
+text-transform:uppercase;
+letter-spacing:.8px;
+}
+
+.checkout-steps span.active{
+color:#fff;
+}
+
+/* ==========================================
+LAYOUT
+========================================== */
+
+.checkout-layout{
+display:grid;
+grid-template-columns:1.6fr 1fr;
+gap:48px;
+align-items:start;
+}
+
+/* ==========================================
+LEFT FORM
+========================================== */
+
+.checkout-form{
+width:100%;
+}
+
+.section{
+margin-bottom:36px;
+}
+
+.section h2{
+font-family:'Oswald',sans-serif;
+font-size:30px;
+font-weight:500;
+margin-bottom:22px;
+color:#fff;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+.form-group label{
+display:block;
+color:#cfcfcf;
+font-size:14px;
+margin-bottom:8px;
+}
+
+.form-group input,
+.form-group select{
+width:100%;
+height:54px;
+padding:0 18px;
+border:1px solid #2a2a2a;
+border-radius:8px;
+background:#0f0f0f;
+color:#fff;
+font-size:15px;
+outline:none;
+transition:.25s;
+}
+
+.form-group input::placeholder{
+color:#6d6d6d;
+}
+
+.form-group input:focus,
+.form-group select:focus
+
+.form-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.checkbox{
+display:flex;
+align-items:center;
+gap:10px;
+color:#bdbdbd;
+font-size:14px;
+}
+
+.checkbox input{
+width:18px;
+height:18px;
+accent-color:#fff;
+}
+
+/* ==========================================
+SHIPPING & PAYMENT
+========================================== */
+
+.shipping-option,
+.payment-option{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:18px;
+border:1px solid #2a2a2a;
+border-radius:10px;
+margin-bottom:14px;
+background:#0b0b0b;
+transition:.25s;
+cursor:pointer;
+}
+
+.shipping-option:hover,
+.payment-option:hover
+
+.shipping-option.active,
+.payment-option.active{
+border-color:#fff;
+}
+
+.shipping-option input,
+.payment-option input{
+display:none;
+}
+
+.option-content{
+flex:1;
+}
+
+.option-title{
+color:#fff;
+font-weight:600;
+margin-bottom:4px;
+}
+
+.option-subtitle{
+color:#8f8f8f;
+font-size:14px;
+}
+
+.option-price{
+color:#fff;
+font-weight:600;
+}
+
+/* ==========================================
+BUTTON
+========================================== */
+
+.place-order-btn{
+width:100%;
+height:60px;
+border:none;
+border-radius:10px;
+background:#fff;
+color:#111;
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:.6px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+cursor:pointer;
+transition:.25s;
+}
+
+.place-order-btn:hover{
+opacity:.92;
+}
+
+/* ==========================================
+ORDER SUMMARY
+========================================== */
+
+.order-summary{
+border:1px solid #2a2a2a;
+border-radius:14px;
+padding:28px;
+background:#0b0b0b;
+
+/* penting: hilangkan sticky */
+position:static;
+
+}
+
+.order-summary h2{
+font-family:'Oswald',sans-serif;
+font-size:34px;
+margin-bottom:24px;
+}
+
+.summary-products{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.summary-product{
+display:grid;
+grid-template-columns:72px 1fr auto;
+gap:14px;
+align-items:center;
+}
+
+.summary-image{
+width:72px;
+height:88px;
+border-radius:8px;
+overflow:hidden;
+position:relative;
+background:#111;
+}
+
+.summary-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.summary-qty{
+position:absolute;
+top:6px;
+right:6px;
+width:20px;
+height:20px;
+border-radius:50%;
+background:#fff;
+color:#111;
+font-size:11px;
+font-weight:700;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.summary-info h4{
+font-family:'Oswald',sans-serif;
+font-size:20px;
+margin-bottom:4px;
+}
+
+.summary-info p{
+color:#8f8f8f;
+font-size:14px;
+margin-bottom:6px;
+}
+
+.summary-line-total{
+font-weight:600;
+color:#fff;
+}
+
+.summary-divider{
+height:1px;
+background:#2a2a2a;
+margin:22px 0;
+}
+
+.summary-row{
+display:flex;
+justify-content:space-between;
+margin-bottom:14px;
+color:#d0d0d0;
+}
+
+.summary-total{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+}
+
+.total-price{
+font-family:'Oswald',sans-serif;
+font-size:36px;
+font-weight:600;
+}
+
+/* ==========================================
+FEATURES
+========================================== */
+
+.summary-features{
+margin-top:28px;
+padding-top:24px;
+border-top:1px solid #222;
+}
+
+.feature{
+display:flex;
+gap:12px;
+margin-bottom:18px;
+}
+
+.feature i{
+color:#fff;
+font-size:18px;
+margin-top:2px;
+}
+
+.feature strong{
+display:block;
+margin-bottom:4px;
+}
+
+.feature p{
+color:#8f8f8f;
+font-size:14px;
+margin:0;
+}
+
+/* ==========================================
+RESPONSIVE
+========================================== */
+
+@media(max-width:1100px){
+
+.checkout-layout{
+    grid-template-columns:1fr;
+    gap:36px;
+}
+
+.order-summary{
+    width:100%;
+}
+
+}
+
+@media(max-width:768px){
+
+.checkout-page{
+    padding:100px 0 60px;
+}
+
+.checkout-container{
+    padding:0 20px;
+}
+
+.checkout-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+}
+
+.checkout-header h1{
+    font-size:52px;
+}
+
+.checkout-steps{
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.form-row{
+    grid-template-columns:1fr;
+}
+
+.checkout-layout{
+    gap:28px;
+}
+
+.order-summary{
+    padding:22px;
+}
+
+.summary-product{
+    grid-template-columns:64px 1fr;
+}
+
+.summary-line-total{
+    grid-column:2;
+    justify-self:end;
+    margin-top:6px;
+}
+
+.total-price{
+    font-size:30px;
+}
+
+}
+
+.input-error{
+    border-color:#ff4d4f !important;
+}
+
+.place-order-btn:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
+
+.form-group.focused label{
+    color:#fff;
+}

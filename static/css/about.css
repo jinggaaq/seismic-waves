@@ -1,0 +1,973 @@
+/* ==========================================
+                ABOUT HERO
+========================================== */
+
+.about-hero{
+
+    height:520px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    margin-top:0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.48),
+            rgba(0,0,0,.48)
+        ),
+        url("../pictures/hero.jpeg") center/cover no-repeat;
+
+}
+.about-hero{
+    position:relative;
+    overflow:hidden;
+}
+
+.about-hero::after {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
+    height: 360px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(23, 23, 23, 0) 0%,
+        rgba(23, 23, 23, 0.08) 20%,
+        rgba(23, 23, 23, 0.25) 40%,
+        rgba(23, 23, 23, 0.55) 60%,
+        rgba(23, 23, 23, 0.82) 80%,
+        #171717 100%
+    );
+
+    z-index: 5;
+    pointer-events: none;
+}
+/* ==========================================
+            HERO CONTENT
+========================================== */
+
+.about-hero-content{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:0 20px;
+
+    overflow:visible;
+}
+/* ==========================================
+                SEISMIC
+========================================== */
+
+.about-hero h1{
+
+    margin:0;
+
+    width:100%;
+
+    font-family:'Oswald', sans-serif;
+
+    font-size:clamp(130px,20vw,330px);
+
+    font-weight:800;
+
+    line-height:1;
+
+    letter-spacing:-6px;
+
+    text-transform:uppercase;
+
+    white-space:nowrap;
+
+    text-align:center;
+
+    color:transparent;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.55),
+            rgba(255,255,255,.38)
+        ),
+        url("../pictures/hero.jpeg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    -webkit-text-stroke:1px rgba(255,255,255,.3);
+
+    transform:scaleX(1.10);
+
+    transform-origin:center;
+
+}
+
+/* ==========================================
+                RESPONSIVE
+========================================== */
+
+@media(max-width:1200px){
+
+    .about-hero h1{
+
+        font-size:17vw;
+
+        letter-spacing:-7px;
+
+    }
+
+}
+
+
+@media(max-width:992px){
+
+    .about-hero{
+
+        height:480px;
+
+    }
+
+    .about-hero h1{
+
+        font-size:16vw;
+
+        letter-spacing:-6px;
+
+    }
+
+}
+
+
+@media(max-width:768px){
+
+    .about-hero{
+
+        height:420px;
+
+    }
+
+    .about-hero h1{
+
+        font-size:15vw;
+
+        letter-spacing:-5px;
+
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    .about-hero{
+
+        height:360px;
+
+    }
+
+    .about-hero h1{
+
+        font-size:14vw;
+
+        letter-spacing:-3px;
+
+    }
+
+}
+
+
+/* ==========================================
+            ABOUT INTRO
+========================================== */
+
+.about-intro {
+    position: relative;
+
+    padding: 80px 0 0;
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #171717;
+}
+
+/* ISI ABOUT TETAP DI ATAS GRADASI */
+
+.about-intro-container{
+    position:relative;
+    z-index:1;
+}
+
+
+.about-intro-container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+    position:relative;
+    min-height:700px;
+}
+
+
+/* ==========================================
+            TITLE
+========================================== */
+
+.about-intro-title{
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:clamp(55px,7vw,110px);
+
+    font-weight:700;
+
+    line-height:.9;
+
+    letter-spacing:-2px;
+
+    color:#ffffff;
+
+    margin:0;
+
+    position:relative;
+
+    z-index:5;
+
+}
+
+
+/* ==========================================
+            MAIN IMAGE
+========================================== */
+
+.about-main-image{
+
+    position:absolute;
+
+    left:0;
+
+    top:130px;
+
+    width:38%;
+
+    height:520px;
+
+    overflow:hidden;
+
+}
+
+
+.about-main-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+/* ==========================================
+            DESCRIPTION
+========================================== */
+
+.about-description{
+
+    position:absolute;
+
+    left:47%;
+
+    top:175px;
+
+    width:30%;
+
+    z-index:5;
+
+}
+
+
+.about-description p{
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+    color:#ffffff;
+
+    font-weight:500;
+
+    text-transform:uppercase;
+
+}
+
+
+/* ==========================================
+            SMALL IMAGE
+========================================== */
+
+.about-small-image{
+
+    position:absolute;
+
+    right:0;
+
+    top:0;
+
+    width:18%;
+
+    height:230px;
+
+    overflow:hidden;
+
+}
+
+
+.about-small-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+/* ==========================================
+            SINCE
+========================================== */
+
+.about-since{
+
+    position:absolute;
+
+    left:47%;
+
+    top:340px;
+
+    z-index:5;
+
+}
+
+
+.about-since span{
+
+    display:block;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    color:#ffffff;
+
+    margin-bottom:5px;
+
+}
+
+
+.about-since strong{
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:clamp(180px,25vw,420px);
+
+    line-height:.75;
+
+    color:rgba(255,255,255,.08);
+
+    font-weight:700;
+
+    letter-spacing:-10px;
+
+    white-space:nowrap;
+
+}
+
+
+/* ==========================================
+            BACKGROUND TEXT
+========================================== */
+
+.about-bg-text{
+
+    position:absolute;
+
+    left:35%;
+
+    bottom:-20px;
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:clamp(120px,20vw,300px);
+
+    font-weight:700;
+
+    line-height:.8;
+
+    color:#f3f3f3;
+
+    white-space:nowrap;
+
+    z-index:1;
+
+    pointer-events:none;
+
+}
+
+
+/* ==========================================
+            RESPONSIVE
+========================================== */
+
+@media(max-width:992px){
+
+    .about-intro-container{
+
+        min-height:1000px;
+
+    }
+
+    .about-main-image{
+
+        width:45%;
+
+    }
+
+    .about-description{
+
+        left:52%;
+
+        width:42%;
+
+    }
+
+    .about-since{
+
+        left:52%;
+
+    }
+
+    .about-small-image{
+
+        width:22%;
+
+    }
+
+}
+
+
+@media(max-width:768px){
+
+    .about-intro{
+
+        padding:70px 0;
+
+    }
+
+    .about-intro-container{
+
+        min-height:auto;
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:30px;
+
+    }
+
+    .about-intro-title{
+
+        font-size:55px;
+
+    }
+
+    .about-main-image{
+
+        position:relative;
+
+        top:auto;
+
+        left:auto;
+
+        width:100%;
+
+        height:450px;
+
+    }
+
+    .about-description{
+
+        position:relative;
+
+        top:auto;
+
+        left:auto;
+
+        width:100%;
+
+    }
+
+    .about-small-image{
+
+        position:relative;
+
+        top:auto;
+
+        right:auto;
+
+        width:55%;
+
+        height:220px;
+
+        margin-left:auto;
+
+    }
+
+    .about-since{
+
+        position:relative;
+
+        top:auto;
+
+        left:auto;
+
+    }
+
+    .about-since strong{
+
+        font-size:130px;
+
+    }
+
+    .about-bg-text{
+
+        display:none;
+
+    }
+
+}
+
+/* =====================================================
+   SECTION
+===================================================== */
+.seismic-2022 {
+    position: relative;
+
+    width: 100%;
+    height: 500px;
+    min-height: 0;
+
+    overflow: hidden;
+
+    background: #171717;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* =====================================================
+   ORBIT FOTO
+   ===================================================== */
+   .seismic-orbit-window {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 430px;
+
+    overflow: hidden;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.seismic-orbit {
+    position: absolute;
+
+    width: 850px;
+    height: 850px;
+
+    left: 50%;
+    top: 60px;
+
+    margin-left: -425px;
+
+    border-radius: 50%;
+
+    z-index: 2;
+
+    animation: seismicFullRotation 35s linear infinite;
+}
+/* =====================================================
+   PUTAR 360 DERAJAT
+   ===================================================== */
+
+@keyframes seismicFullRotation {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   FOTO
+   ===================================================== */
+
+.seismic-photo {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 105px;
+    height: 135px;
+
+    margin-left: -52.5px;
+    margin-top: -67.5px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: transparent;
+
+    border: 1px solid rgba(230, 219, 201, 0.30);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =====================================================
+   GAMBAR
+   ===================================================== */
+
+.seismic-photo img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    filter:
+        grayscale(100%)
+        contrast(105%);
+}
+
+
+/* =====================================================
+   RADIUS FOTO
+   ===================================================== */
+
+/* =====================================================
+   12 FOTO PADA SATU LINGKARAN
+===================================================== */
+
+.seismic-photo:nth-child(1) {
+    transform:
+        rotate(0deg)
+        translateY(-375px)
+        rotate(0deg);
+}
+
+.seismic-photo:nth-child(2) {
+    transform:
+        rotate(30deg)
+        translateY(-375px)
+        rotate(-30deg);
+}
+
+.seismic-photo:nth-child(3) {
+    transform:
+        rotate(60deg)
+        translateY(-375px)
+        rotate(-60deg);
+}
+
+.seismic-photo:nth-child(4) {
+    transform:
+        rotate(90deg)
+        translateY(-375px)
+        rotate(-90deg);
+}
+
+.seismic-photo:nth-child(5) {
+    transform:
+        rotate(120deg)
+        translateY(-375px)
+        rotate(-120deg);
+}
+
+.seismic-photo:nth-child(6) {
+    transform:
+        rotate(150deg)
+        translateY(-375px)
+        rotate(-150deg);
+}
+
+.seismic-photo:nth-child(7) {
+    transform:
+        rotate(180deg)
+        translateY(-375px)
+        rotate(-180deg);
+}
+
+.seismic-photo:nth-child(8) {
+    transform:
+        rotate(210deg)
+        translateY(-375px)
+        rotate(-210deg);
+}
+
+.seismic-photo:nth-child(9) {
+    transform:
+        rotate(240deg)
+        translateY(-375px)
+        rotate(-240deg);
+}
+
+.seismic-photo:nth-child(10) {
+    transform:
+        rotate(270deg)
+        translateY(-375px)
+        rotate(-270deg);
+}
+
+.seismic-photo:nth-child(11) {
+    transform:
+        rotate(300deg)
+        translateY(-375px)
+        rotate(-300deg);
+}
+
+.seismic-photo:nth-child(12) {
+    transform:
+        rotate(330deg)
+        translateY(-375px)
+        rotate(-330deg);
+}
+
+.seismic-photo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    filter:
+        grayscale(100%)
+        contrast(105%);
+}
+/* =====================================================
+   KONTEN TENGAH
+===================================================== */
+
+.seismic-center {
+    position: absolute;
+
+    top: 74%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 500px;
+    max-width: 90%;
+
+    text-align: center;
+
+    z-index: 10;
+}
+
+/* =====================================================
+   JUDUL
+===================================================== */
+
+.seismic-center h2 {
+
+    margin: 0 0 20px;
+
+    color: #e6dbc9;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(32px, 4vw, 55px);
+
+    font-weight: 300;
+
+    line-height: 1.08;
+}
+
+
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.seismic-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-top: 27px;
+
+    padding: 15px 27px;
+
+    border-radius: 50px;
+
+    background: #e6dbc9;
+
+    color: #171717;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+
+.seismic-button:hover {
+
+    background: #c53211;
+
+    color: #fff;
+
+    transform: translateY(-3px);
+}
+
+
+.seismic-button span {
+
+    font-size: 19px;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.seismic-features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    width: 680px;
+
+    max-width: 100%;
+
+    margin-top: 55px;
+
+    margin-left: 50%;
+
+    transform: translateX(-50%);
+
+    border-top:
+        1px solid
+        rgba(230, 219, 201, .25);
+}
+
+
+.seismic-feature {
+
+    padding: 23px 20px;
+
+    border-right:
+        1px solid
+        rgba(230, 219, 201, .20);
+}
+
+
+.seismic-feature:last-child {
+
+    border-right: none;
+}
+
+
+.seismic-feature h3 {
+
+    margin: 0 0 9px;
+
+    color: #e6dbc9;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
+
+    font-weight: 400;
+}
+
+
+.seismic-feature p {
+
+    margin: 0;
+
+    color:
+        rgba(230, 219, 201, .55);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}

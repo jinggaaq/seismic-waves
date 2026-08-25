@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pelanggan | Admin Seismic Waves</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin-pelanggan.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+
+    <div class="sidebar-brand">
+
+        <div class="brand-logo">
+
+            <span>SEISMIC</span>
+
+            <small>WAVES</small>
+
+        </div>
+
+        <p>
+            ADMIN PANEL
+        </p>
+
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <div class="menu-label">
+            MENU UTAMA
+        </div>
+
+
+        <a
+            href="{{ url_for('admin_dashboard') }}"
+            class="menu-item"
+        >
+
+            <span class="menu-icon">
+                ◈
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('admin_produk') }}"
+            class="menu-item"
+        >
+
+            <span class="menu-icon">
+                □
+            </span>
+
+            <span>
+                Produk
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('admin_pesanan') }}"
+            class="menu-item"
+        >
+
+            <span class="menu-icon">
+                ≡
+            </span>
+
+            <span>
+                Pesanan
+            </span>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('admin_pelanggan') }}"
+            class="menu-item active"
+        >
+
+            <span class="menu-icon">
+                ○
+            </span>
+
+            <span>
+                Pelanggan
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="{{ url_for('admin_logout') }}"
+            class="website-link"
+        >
+
+            <span>
+                ⇥
+            </span>
+
+            Logout
+
+        </a>
+
+
+        <div class="admin-profile">
+
+            <div class="admin-avatar">
+                {{ admin_nama[0]|upper }}
+            </div>
+
+            <div class="admin-info">
+
+                <strong>
+                    {{ admin_nama }}
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="main-content">
+
+
+    <header class="topbar">
+
+        <div class="page-heading">
+
+            <div class="breadcrumb">
+                ADMIN / PELANGGAN
+            </div>
+
+            <h1>
+                Pelanggan
+            </h1>
+
+            <p>
+                Data pelanggan yang telah melakukan pembelian.
+            </p>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Sistem Aktif
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         STATISTIK
+    ================================================== -->
+
+    <section class="customer-stats">
+
+
+        <div class="customer-stat">
+
+            <span>
+                TOTAL PELANGGAN
+            </span>
+
+            <strong>
+                {{ total_pelanggan }}
+            </strong>
+
+        </div>
+
+
+        <div class="customer-stat">
+
+            <span>
+                PELANGGAN AKTIF
+            </span>
+
+            <strong>
+                {{ pelanggan_aktif }}
+            </strong>
+
+        </div>
+
+
+        <div class="customer-stat">
+
+            <span>
+                TOTAL PESANAN
+            </span>
+
+            <strong>
+                {{ total_pesanan }}
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         CUSTOMER TABLE
+    ================================================== -->
+
+    <section class="customer-panel">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="panel-eyebrow">
+                    CUSTOMER MANAGEMENT
+                </span>
+
+                <h2>
+                    Data Pelanggan
+                </h2>
+
+            </div>
+
+
+            <span class="customer-count">
+                {{ total_pelanggan }} Pelanggan
+            </span>
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <form
+            method="GET"
+            class="search-box"
+        >
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Cari nama, email, atau nomor HP..."
+                value="{{ search or '' }}"
+            >
+
+            <button type="submit">
+                Cari
+            </button>
+
+        </form>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            PELANGGAN
+                        </th>
+
+                        <th>
+                            KONTAK
+                        </th>
+
+                        <th>
+                            ALAMAT
+                        </th>
+
+                        <th>
+                            KOTA
+                        </th>
+
+                        <th>
+                            PROVINSI
+                        </th>
+
+                        <th>
+                            PESANAN
+                        </th>
+
+                        <th>
+                            AKSI
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                {% for pelanggan in pelanggan_list %}
+
+                    <tr>
+
+
+                        <!-- NAMA -->
+
+                        <td>
+
+                            <div class="customer-profile">
+
+                                <div class="customer-avatar">
+
+                                    {{ pelanggan.nama[0]|upper }}
+
+                                </div>
+
+
+                                <div class="customer-info">
+
+                                    <strong>
+                                        {{ pelanggan.nama }}
+                                    </strong>
+
+                                    <span>
+                                        ID #{{ pelanggan.id }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- KONTAK -->
+
+                        <td>
+
+                            <div class="contact-info">
+
+                                <span>
+                                    {{ pelanggan.no_hp }}
+                                </span>
+
+                                <span>
+                                    {{ pelanggan.email or '-' }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- ALAMAT -->
+
+                        <td>
+
+                            <div class="address">
+
+                                {{ pelanggan.alamat }}
+
+                                {% if pelanggan.kode_pos %}
+
+                                    <small>
+                                        {{ pelanggan.kode_pos }}
+                                    </small>
+
+                                {% endif %}
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- KOTA -->
+
+                        <td>
+
+                            {{ pelanggan.kota or '-' }}
+
+                        </td>
+
+
+                        <!-- PROVINSI -->
+
+                        <td>
+
+                            {{ pelanggan.provinsi or '-' }}
+
+                        </td>
+
+
+                        <!-- PESANAN -->
+
+                        <td>
+
+                            <span class="order-count">
+
+                                {{ pelanggan.pesanan|length }}
+
+                                Pesanan
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- AKSI -->
+
+                        <td>
+
+                            <a
+                                href="{{ url_for(
+                                    'admin_detail_pelanggan',
+                                    id=pelanggan.id
+                                ) }}"
+                                class="detail-button"
+                            >
+                                Lihat Detail
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+
+
+                {% else %}
+
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="empty"
+                        >
+
+                            <div class="empty-icon">
+                                ○
+                            </div>
+
+                            <strong>
+                                Belum ada pelanggan
+                            </strong>
+
+                            <span>
+                                Data pelanggan akan muncul setelah melakukan pembelian.
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+
+    <footer class="admin-footer">
+
+        <span>
+            SEISMIC WAVES
+        </span>
+
+        <span>
+            ADMIN PANEL · 2026
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+</body>
+
+</html>

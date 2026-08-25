@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Order Success | Seismic Waves</title>
+
+
+    <!-- ================= GOOGLE FONT ================= -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ================= FONT AWESOME ================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <!-- ================= GLOBAL CSS ================= -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/navbar.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/responsive.css') }}"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           ORDER SUCCESS PAGE
+        ===================================================== */
+
+        .success-section {
+
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 100px 20px;
+
+            background: #171717;
+
+        }
+
+
+        /* =====================================================
+           SUCCESS CARD
+        ===================================================== */
+
+        .success-card {
+
+            width: 100%;
+
+            max-width: 650px;
+
+            padding: 55px 55px;
+
+            text-align: center;
+
+            background: #202020;
+
+            border: 1px solid #3d3d3d;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.35);
+
+        }
+
+
+        /* =====================================================
+           SUCCESS ICON
+        ===================================================== */
+
+        .success-icon {
+
+            width: 82px;
+
+            height: 82px;
+
+            margin: 0 auto 30px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #ffffff;
+
+            color: #171717;
+
+            font-size: 32px;
+
+            box-shadow:
+                0 0 0 8px rgba(255,255,255,.05);
+
+        }
+
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
+        .success-card h1 {
+
+            font-family: 'Oswald', sans-serif;
+
+            font-size: 52px;
+
+            font-weight: 700;
+
+            letter-spacing: 3px;
+
+            line-height: 1;
+
+            margin-bottom: 20px;
+
+            color: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .success-card > p {
+
+            font-family: 'Poppins', sans-serif;
+
+            color: #a8a8a8;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            margin: 0 auto 40px;
+
+            max-width: 500px;
+
+        }
+
+
+        .success-card > p strong {
+
+            color: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           ORDER INFORMATION
+        ===================================================== */
+
+        .order-info {
+
+            text-align: left;
+
+            border-top: 1px solid #3d3d3d;
+
+            border-bottom: 1px solid #3d3d3d;
+
+            padding: 18px 0;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .order-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+
+            padding: 13px 0;
+
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+
+        .order-row span:first-child {
+
+            color: #888;
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .order-row span:last-child {
+
+            font-weight: 500;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            text-align: right;
+
+        }
+
+
+        /* =====================================================
+           WHATSAPP BUTTON
+        ===================================================== */
+
+        .whatsapp-btn {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            width: 100%;
+
+            padding: 17px 20px;
+
+            background: #ffffff;
+
+            color: #111111;
+
+            text-decoration: none;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: .8px;
+
+            border: 1px solid #ffffff;
+
+            transition: .35s;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .whatsapp-btn i {
+
+            font-size: 19px;
+
+        }
+
+
+        .whatsapp-btn:hover {
+
+            background: transparent;
+
+            color: #ffffff;
+
+            transform: translateY(-3px);
+
+        }
+
+
+        /* =====================================================
+           BACK HOME
+        ===================================================== */
+
+        .home-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #888;
+
+            text-decoration: none;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 13px;
+
+            transition: .3s;
+
+        }
+
+
+        .home-btn:hover {
+
+            color: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .success-section {
+
+                min-height: calc(100vh - 70px);
+
+                padding: 70px 15px;
+
+            }
+
+
+            .success-card {
+
+                padding: 40px 22px;
+
+            }
+
+
+            .success-card h1 {
+
+                font-size: 38px;
+
+                letter-spacing: 2px;
+
+            }
+
+
+            .success-icon {
+
+                width: 70px;
+
+                height: 70px;
+
+                font-size: 27px;
+
+            }
+
+
+            .order-row {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+
+            }
+
+
+            .order-row span:last-child {
+
+                text-align: left;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header>
+
+    <div class="container navbar">
+
+        <a
+            href="{{ url_for('home') }}"
+            class="logo"
+        >
+
+            <h2>SEISMIC</h2>
+
+            <span>WAVES</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     SUCCESS
+===================================================== -->
+
+<main>
+
+    <section class="success-section">
+
+        <div class="success-card">
+
+
+            <!-- SUCCESS ICON -->
+
+            <div class="success-icon">
+
+                <i class="fa-solid fa-check"></i>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h1>
+                ORDER SUCCESS
+            </h1>
+
+
+            <p>
+
+                Terima kasih telah berbelanja
+                di <strong>Seismic Waves</strong>.
+
+                Pesanan kamu telah berhasil dibuat.
+
+            </p>
+
+
+            <!-- ORDER INFORMATION -->
+
+            <div class="order-info">
+
+
+                <div class="order-row">
+
+                    <span>
+                        Order Code
+                    </span>
+
+                    <span>
+                        {{ order.kode_pesanan }}
+                    </span>
+
+                </div>
+
+
+                <div class="order-row">
+
+                    <span>
+                        Customer
+                    </span>
+
+                    <span>
+                        {{ order.nama }}
+                    </span>
+
+                </div>
+
+
+                <div class="order-row">
+
+                    <span>
+                        Payment
+                    </span>
+
+                    <span>
+                        {{ order.payment }}
+                    </span>
+
+                </div>
+
+
+                <div class="order-row">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span>
+                        Rp{{ "{:,.0f}".format(order.total).replace(",", ".") }}
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="#"
+                id="whatsappButton"
+                class="whatsapp-btn"
+                target="_blank"
+            >
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                KIRIM PESANAN KE ADMIN
+
+            </a>
+
+
+            <!-- HOME -->
+
+            <a
+                href="{{ url_for('home') }}"
+                class="home-btn"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Kembali ke Home
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     WHATSAPP SCRIPT
+===================================================== -->
+
+<script>
+
+    const whatsappButton =
+        document.getElementById(
+            "whatsappButton"
+        );
+
+
+    /*
+     * Nomor WhatsApp Admin
+     */
+
+    const adminNumber =
+        "6281234567890";
+
+
+    const orderCode =
+        "{{ order.kode_pesanan }}";
+
+
+    const customerName =
+        "{{ order.nama }}";
+
+
+    const total =
+        "{{ '{:,.0f}'.format(order.total).replace(',', '.') }}";
+
+
+    const payment =
+        "{{ order.payment }}";
+
+
+    const message =
+        `Halo Admin Seismic Waves,
+
+Saya ingin mengonfirmasi pesanan saya.
+
+Kode Pesanan: ${orderCode}
+Nama: ${customerName}
+Total: Rp${total}
+Metode Pembayaran: ${payment}
+
+Mohon diproses. Terima kasih.`;
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        adminNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    whatsappButton.href =
+        whatsappURL;
+
+</script>
+
+
+</body>
+
+</html>
+

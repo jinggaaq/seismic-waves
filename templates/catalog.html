@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}
+Shop | Seismic Waves
+{% endblock %}
+
+{% block page_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/shop.css') }}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<section class="shop-products">
+
+    <div class="container">
+
+        <div class="shop-title">
+
+            <h2>SHOP ALL</h2>
+
+            <p>
+                Explore all products from Seismic Waves.
+            </p>
+
+        </div>
+
+
+        <div
+            class="shop-grid"
+            id="productGrid"
+        >
+
+            {% for item in produk %}
+
+            <div class="shop-card">
+
+                <div class="shop-image">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='pictures/produk/' + item.folder + '/1.jpg'
+                        ) }}"
+                        alt="{{ item.nama }}"
+                    >
+
+                    <button
+                        class="wishlist"
+                        type="button"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="shop-info">
+
+                    <h3>
+                        {{ item.nama }}
+                    </h3>
+
+                    <p class="price">
+                        Rp{{ "{:,.0f}".format(item.harga).replace(",", ".") }}
+                    </p>
+
+
+                    <a
+                        href="{{ url_for('detail_produk', id=item.id) }}"
+                        class="product-btn"
+                    >
+                        Detail Produk
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div
+            class="pagination"
+            id="pagination"
+        ></div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script
+    src="{{ url_for('static', filename='js/shop.js') }}"
+></script>
+
+{% endblock %}

@@ -1,0 +1,1094 @@
+
+/* =========================================================
+   SEISMIC WAVES
+   ADMIN PELANGGAN
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #090909;
+
+    color: #fff;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 255px;
+
+    min-height: 100vh;
+
+    background: #0d0d0d;
+
+    border-right: 1px solid #242424;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    z-index: 100;
+}
+
+.sidebar-brand {
+    padding: 32px 25px 28px;
+
+    border-bottom: 1px solid #242424;
+}
+
+.brand-logo {
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 0.9;
+}
+
+.brand-logo span {
+    font-size: 22px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.brand-logo small {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 7px;
+
+    margin-top: 8px;
+}
+
+.sidebar-brand p {
+    margin-top: 22px;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #666;
+
+    text-transform: uppercase;
+}
+
+
+/* MENU */
+
+.sidebar-menu {
+    padding: 30px 15px;
+
+    flex: 1;
+}
+
+.menu-label {
+    padding: 0 12px;
+
+    margin-bottom: 12px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #555;
+}
+
+.menu-item {
+    min-height: 48px;
+
+    padding: 0 14px;
+
+    margin-bottom: 5px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    color: #999;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.25s;
+}
+
+.menu-item:hover {
+    background: #171717;
+
+    color: #fff;
+}
+
+.menu-item.active {
+    background: #fff;
+
+    color: #080808;
+
+    font-weight: 700;
+}
+
+.menu-icon {
+    width: 20px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+
+/* SIDEBAR BOTTOM */
+
+.sidebar-bottom {
+    padding: 15px;
+
+    border-top: 1px solid #242424;
+}
+
+.website-link {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 100%;
+
+    height: 42px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #292929;
+
+    border-radius: 7px;
+
+    color: #aaa;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    transition: 0.25s;
+}
+
+.website-link:hover {
+    background: #151515;
+
+    color: #fff;
+
+    border-color: #555;
+}
+
+.admin-profile {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 5px 5px;
+}
+
+.admin-avatar {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: #111;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.admin-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.admin-info strong {
+    font-size: 11px;
+
+    color: #ddd;
+}
+
+.admin-info span {
+    font-size: 9px;
+
+    color: #555;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main-content {
+    margin-left: 255px;
+
+    width: calc(100% - 255px);
+
+    min-height: 100vh;
+
+    background: #f4f4f2;
+
+    color: #111;
+
+    padding: 42px 45px 30px;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+}
+
+.breadcrumb {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #999;
+
+    margin-bottom: 10px;
+}
+
+.page-heading h1 {
+    font-size: 31px;
+
+    margin-bottom: 7px;
+}
+
+.page-heading p {
+    color: #888;
+
+    font-size: 14px;
+}
+
+.status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 20px;
+
+    background: #fff;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #111;
+}
+
+
+/* =========================================================
+   CUSTOMER STATS
+========================================================= */
+
+.customer-stats {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.customer-stat {
+    background: #fff;
+
+    border: 1px solid #e7e7e7;
+
+    border-radius: 12px;
+
+    padding: 20px 22px;
+}
+
+.customer-stat span {
+    display: block;
+
+    color: #999;
+
+    font-size: 10px;
+
+    letter-spacing: 1.3px;
+
+    margin-bottom: 12px;
+}
+
+.customer-stat strong {
+    font-size: 28px;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.customer-panel {
+    background: #fff;
+
+    border: 1px solid #e7e7e7;
+
+    border-radius: 12px;
+
+    padding: 24px;
+}
+
+.panel-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 22px;
+}
+
+.panel-eyebrow {
+    display: block;
+
+    color: #aaa;
+
+    font-size: 9px;
+
+    letter-spacing: 1.7px;
+
+    margin-bottom: 7px;
+}
+
+.panel-header h2 {
+    font-size: 20px;
+}
+
+.customer-count {
+    padding: 8px 11px;
+
+    border-radius: 6px;
+
+    background: #f4f4f4;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box {
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 22px;
+}
+
+.search-box input {
+    flex: 1;
+
+    height: 42px;
+
+    padding: 0 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 12px;
+}
+
+.search-box input:focus {
+    border-color: #999;
+}
+
+.search-box button {
+    height: 42px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #111;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.search-box button:hover {
+    background: #292929;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 1100px;
+}
+
+thead tr {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+th {
+    padding: 0 12px 13px;
+
+    text-align: left;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    color: #999;
+}
+
+td {
+    padding: 17px 12px;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    font-size: 12px;
+
+    color: #444;
+
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background: #fafafa;
+}
+
+
+/* =========================================================
+   CUSTOMER PROFILE
+========================================================= */
+
+.customer-profile {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+.customer-avatar {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    color: #fff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.customer-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.customer-info strong {
+    color: #222;
+
+    font-size: 13px;
+}
+
+.customer-info span {
+    color: #aaa;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.contact-info span:first-child {
+    color: #333;
+
+    font-weight: 600;
+}
+
+.contact-info span:last-child {
+    color: #999;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   ADDRESS
+========================================================= */
+
+.address {
+    max-width: 210px;
+
+    line-height: 1.5;
+
+    color: #555;
+}
+
+.address small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #aaa;
+}
+
+
+/* =========================================================
+   ORDER COUNT
+========================================================= */
+
+.order-count {
+    display: inline-block;
+
+    padding: 7px 9px;
+
+    border-radius: 6px;
+
+    background: #f3f3f3;
+
+    color: #666;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   DETAIL BUTTON
+========================================================= */
+
+.detail-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 35px;
+
+    padding: 7px 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+    background: #fff;
+
+    color: #444;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.detail-button:hover {
+    border-color: #999;
+
+    color: #111;
+
+    background: #fafafa;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty {
+    text-align: center;
+
+    padding: 60px 20px !important;
+
+    color: #aaa;
+}
+
+.empty-icon {
+    font-size: 28px;
+
+    color: #ccc;
+
+    margin-bottom: 10px;
+}
+
+.empty strong,
+.empty span {
+    display: block;
+}
+
+.empty strong {
+    color: #555;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+.empty span {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.admin-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding-top: 25px;
+
+    margin-top: 20px;
+
+    border-top: 1px solid #dedede;
+
+    color: #aaa;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .main-content {
+        padding: 35px 30px;
+    }
+
+    .customer-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 80px;
+    }
+
+    .sidebar-brand {
+        padding: 25px 10px;
+
+        text-align: center;
+    }
+
+    .brand-logo span {
+        font-size: 14px;
+
+        letter-spacing: 1px;
+    }
+
+    .brand-logo small {
+        font-size: 7px;
+
+        letter-spacing: 3px;
+    }
+
+    .sidebar-brand p {
+        display: none;
+    }
+
+    .sidebar-menu {
+        padding: 25px 10px;
+    }
+
+    .menu-label {
+        display: none;
+    }
+
+    .menu-item {
+        justify-content: center;
+
+        padding: 0;
+    }
+
+    .menu-item > span:not(.menu-icon) {
+        display: none;
+    }
+
+    .menu-icon {
+        font-size: 18px;
+    }
+
+    .sidebar-bottom {
+        padding: 10px;
+    }
+
+    .website-link {
+        font-size: 0;
+    }
+
+    .website-link span {
+        font-size: 17px;
+    }
+
+    .admin-profile {
+        justify-content: center;
+    }
+
+    .admin-info {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 80px;
+
+        width: calc(100% - 80px);
+
+        padding: 30px 20px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .main-content {
+        padding: 25px 15px 70px;
+    }
+
+    .topbar-right {
+        display: none;
+    }
+
+    .page-heading h1 {
+        font-size: 26px;
+    }
+
+    .page-heading p {
+        font-size: 12px;
+    }
+
+    .customer-panel {
+        padding: 17px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .admin-footer {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+}
+/* =========================================================
+   FINAL MOBILE RESPONSIVE - NO HTML CHANGES REQUIRED
+   ========================================================= */
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 72px !important;
+        min-width: 72px;
+    }
+
+    .sidebar-brand {
+        padding: 22px 6px 18px;
+        text-align: center;
+    }
+
+    .brand-logo span {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .brand-logo small {
+        font-size: 6px;
+        letter-spacing: 2px;
+        margin-top: 5px;
+    }
+
+    .sidebar-brand p,
+    .menu-label,
+    .menu-item > span:not(.menu-icon),
+    .admin-info,
+    .coming-soon,
+    .logout-icon {
+        display: none !important;
+    }
+
+    .sidebar-menu {
+        padding: 18px 7px;
+    }
+
+    .menu-item {
+        min-height: 46px;
+        padding: 0;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .menu-icon {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .sidebar-bottom {
+        padding: 8px 7px;
+    }
+
+    .website-link {
+        height: 40px;
+        font-size: 0;
+    }
+
+    .website-link span {
+        font-size: 17px;
+    }
+
+    .admin-profile {
+        justify-content: center;
+        padding: 7px 0 3px;
+    }
+
+    .admin-avatar {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .main-content {
+        margin-left: 72px !important;
+        width: calc(100% - 72px) !important;
+        min-width: 0;
+        padding: 24px 14px 55px !important;
+    }
+
+    .topbar {
+        margin-bottom: 20px;
+    }
+
+    .breadcrumb {
+        font-size: 8px;
+    }
+
+    .page-heading h1 {
+        font-size: 25px;
+    }
+
+    .page-heading p {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    .topbar-right {
+        display: none;
+    }
+
+    .customer-panel {
+        width: 100%;
+        min-width: 0;
+        padding: 15px !important;
+        border-radius: 10px;
+    }
+
+    .customer-panel-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .search-box input,
+    .search-box button {
+        width: 100%;
+        min-height: 40px;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .customer-table,
+    table {
+        min-width: 760px;
+    }
+
+    th {
+        font-size: 8px;
+    }
+
+    td {
+        padding: 12px 7px;
+        font-size: 9px;
+    }
+
+    .admin-footer {
+        flex-direction: column;
+        gap: 7px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 62px !important;
+        min-width: 62px;
+    }
+
+    .main-content {
+        margin-left: 62px !important;
+        width: calc(100% - 62px) !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .customer-panel {
+        padding: 12px !important;
+    }
+
+    .customer-table,
+    table {
+        min-width: 720px;
+    }
+}

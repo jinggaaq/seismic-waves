@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pesanan | Admin Seismic Waves</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin-pesanan.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+
+    <!-- BRAND -->
+
+    <div class="sidebar-brand">
+
+        <div class="brand-logo">
+
+            <span>SEISMIC</span>
+
+            <small>WAVES</small>
+
+        </div>
+
+        <p>
+            ADMIN PANEL
+        </p>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <nav class="sidebar-menu">
+
+        <div class="menu-label">
+            MENU UTAMA
+        </div>
+
+
+        <!-- DASHBOARD -->
+
+        <a
+            href="{{ url_for('admin_dashboard') }}"
+            class="menu-item"
+        >
+
+            <span class="menu-icon">
+                ◈
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <!-- PRODUK -->
+
+        <a
+            href="{{ url_for('admin_produk') }}"
+            class="menu-item"
+        >
+
+            <span class="menu-icon">
+                □
+            </span>
+
+            <span>
+                Produk
+            </span>
+
+        </a>
+
+
+        <!-- PESANAN -->
+
+        <a
+            href="{{ url_for('admin_pesanan') }}"
+            class="menu-item active"
+        >
+
+            <span class="menu-icon">
+                ≡
+            </span>
+
+            <span>
+                Pesanan
+            </span>
+
+        </a>
+
+
+        <!-- PELANGGAN -->
+
+        <a
+            href="{{ url_for('admin_pelanggan') }}"
+            class="menu-item"
+        >
+
+            <span class="menu-icon">
+                ○
+            </span>
+
+            <span>
+                Pelanggan
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="sidebar-bottom">
+
+
+        <!-- LOGOUT -->
+
+        <a
+            href="{{ url_for('admin_logout') }}"
+            class="website-link logout-button"
+        >
+
+            <span>
+                ⇥
+            </span>
+
+            Logout
+
+        </a>
+
+
+        <!-- ADMIN PROFILE -->
+
+        <div class="admin-profile">
+
+            <div class="admin-avatar">
+                {{ admin_nama[0]|upper }}
+            </div>
+
+
+            <div class="admin-info">
+
+                <strong>
+                    {{ admin_nama }}
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="main-content">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+
+        <div class="page-heading">
+
+            <div class="breadcrumb">
+                ADMIN / PESANAN
+            </div>
+
+            <h1>
+                Pesanan
+            </h1>
+
+            <p>
+                Kelola dan pantau seluruh pesanan pelanggan.
+            </p>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Sistem Aktif
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- FLASH MESSAGE -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            <div class="flash-container">
+
+                {% for category, message in messages %}
+
+                    <div class="flash flash-{{ category }}">
+
+                        <span class="flash-icon">
+
+                            {% if category == "success" %}
+                                ✓
+                            {% else %}
+                                !
+                            {% endif %}
+
+                        </span>
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+    {% endwith %}
+
+
+
+    <!-- =================================================
+         STATISTIK PESANAN
+    ================================================== -->
+
+    <section class="order-stats">
+
+
+        <div class="order-stat">
+
+            <span class="order-stat-label">
+                TOTAL PESANAN
+            </span>
+
+            <strong>
+                {{ total_pesanan }}
+            </strong>
+
+        </div>
+
+
+        <div class="order-stat">
+
+            <span class="order-stat-label">
+                DIPROSES
+            </span>
+
+            <strong>
+                {{ pesanan_diproses }}
+            </strong>
+
+        </div>
+
+
+        <div class="order-stat">
+
+            <span class="order-stat-label">
+                DIKIRIM
+            </span>
+
+            <strong>
+                {{ pesanan_dikirim }}
+            </strong>
+
+        </div>
+
+
+        <div class="order-stat warning">
+
+            <span class="order-stat-label">
+                SELESAI
+            </span>
+
+            <strong>
+                {{ pesanan_selesai }}
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         PESANAN
+    ================================================== -->
+
+    <section class="order-panel">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="panel-eyebrow">
+                    ORDER MANAGEMENT
+                </span>
+
+                <h2>
+                    Daftar Pesanan
+                </h2>
+
+            </div>
+
+
+            <span class="total-label">
+                {{ total_pesanan }} Pesanan
+            </span>
+
+        </div>
+
+
+
+        <!-- FILTER -->
+
+        <div class="order-filter">
+
+            <a
+                href="{{ url_for('admin_pesanan') }}"
+                class="filter-button active"
+            >
+                Semua
+            </a>
+
+            <a
+                href="{{ url_for('admin_pesanan', status='Diproses') }}"
+                class="filter-button"
+            >
+                Diproses
+            </a>
+
+            <a
+                href="{{ url_for('admin_pesanan', status='Diserahkan ke Ekspedisi') }}"
+                class="filter-button"
+            >
+                Dikirim
+            </a>
+
+            <a
+                href="{{ url_for('admin_pesanan', status='Selesai') }}"
+                class="filter-button"
+            >
+                Selesai
+            </a>
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            PESANAN
+                        </th>
+
+                        <th>
+                            PELANGGAN
+                        </th>
+
+                        <th>
+                            PEMBAYARAN
+                        </th>
+
+                        <th>
+                            TOTAL
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            AKSI
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                {% for pesanan in pesanan_list %}
+
+                    <tr>
+
+
+                        <!-- PESANAN -->
+
+                        <td>
+
+                            <div class="order-code">
+
+                                <strong>
+                                    {{ pesanan.kode_pesanan }}
+                                </strong>
+
+                                <span>
+                                    {{ pesanan.tanggal_pesanan.strftime('%d %B %Y') if pesanan.tanggal_pesanan else '-' }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- PELANGGAN -->
+
+                        <td>
+
+                            <div class="customer-name">
+
+                                <strong>
+                                    {{ pesanan.pelanggan.nama }}
+                                </strong>
+
+                                <span>
+                                    {{ pesanan.pelanggan.no_hp }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- PEMBAYARAN -->
+
+                        <td>
+
+                            <span class="payment-badge">
+
+                                {% if pesanan.metode_pembayaran == 'QRIS' %}
+
+                                    QRIS
+
+                                {% else %}
+
+                                    Transfer Bank
+
+                                {% endif %}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- TOTAL -->
+
+                        <td>
+
+                            <strong class="price">
+
+                                Rp
+                                {{ "{:,.0f}".format(
+                                    pesanan.total_harga
+                                ).replace(",", ".") }}
+
+                            </strong>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            {% if pesanan.status_pesanan == 'Diproses' %}
+
+                                <span class="status-badge status-process">
+
+                                    <span></span>
+
+                                    Diproses
+
+                                </span>
+
+
+                            {% elif pesanan.status_pesanan == 'Diserahkan ke Ekspedisi' %}
+
+                                <span class="status-badge status-shipped">
+
+                                    <span></span>
+
+                                    Dikirim
+
+                                </span>
+
+
+                            {% else %}
+
+                                <span class="status-badge status-done">
+
+                                    <span></span>
+
+                                    Selesai
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- AKSI -->
+
+                        <td>
+
+                            <div class="action-buttons">
+
+
+                                {% if pesanan.status_pesanan == 'Diproses' %}
+
+                                    <a
+                                        href="{{ url_for(
+                                            'admin_kirim_pesanan',
+                                            id=pesanan.id
+                                        ) }}"
+                                        class="action-button send"
+                                    >
+                                        Serahkan ke Ekspedisi
+                                    </a>
+
+
+                                {% elif pesanan.status_pesanan == 'Diserahkan ke Ekspedisi' %}
+
+                                    <a
+                                        href="{{ url_for(
+                                            'admin_selesaikan_pesanan',
+                                            id=pesanan.id
+                                        ) }}"
+                                        class="action-button finish"
+                                        onclick="return confirm('Tandai pesanan ini sebagai selesai?');"
+                                    >
+                                        Pesanan Selesai
+                                    </a>
+
+
+                                {% else %}
+
+                                    <span class="completed-text">
+                                        ✓ Selesai
+                                    </span>
+
+                                {% endif %}
+
+
+                                <a
+                                    href="{{ url_for(
+                                        'admin_detail_pesanan',
+                                        id=pesanan.id
+                                    ) }}"
+                                    class="detail-button"
+                                >
+                                    Detail
+                                </a>
+
+
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+
+
+                {% else %}
+
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="empty"
+                        >
+
+                            <div class="empty-icon">
+                                ≡
+                            </div>
+
+                            <strong>
+                                Belum ada pesanan
+                            </strong>
+
+                            <span>
+                                Pesanan pelanggan akan muncul di sini.
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="admin-footer">
+
+        <span>
+            SEISMIC WAVES
+        </span>
+
+        <span>
+            ADMIN PANEL · 2026
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+</body>
+
+</html>

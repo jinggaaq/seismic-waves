@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+About Us | Seismic Waves
+{% endblock %}
+
+
+<!-- =====================================================
+     ABOUT PAGE CSS
+===================================================== -->
+
+{% block page_css %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/about.css') }}"
+>
+
+{% endblock %}
+
+
+
+<!-- =====================================================
+     ABOUT PAGE CONTENT
+===================================================== -->
+
+{% block content %}
+
+
+<main>
+
+
+    <!-- ==========================================
+                    ABOUT HERO
+    ========================================== -->
+
+    <section class="about-hero">
+
+        <div class="about-hero-content">
+
+            <h1>
+                SEISMIC
+            </h1>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+                    ABOUT INTRO
+    ========================================== -->
+
+    <section class="about-intro">
+
+        <div class="about-intro-container">
+
+
+            <!-- Judul -->
+
+            <h2 class="about-intro-title">
+                MODERN STREETWEAR
+            </h2>
+
+
+
+            <!-- Foto utama -->
+
+            <div class="about-main-image">
+
+                <img
+                    src="{{ url_for('static', filename='pictures/About 1.jpeg') }}"
+                    alt="Seismic Waves"
+                >
+
+            </div>
+
+
+
+            <!-- Deskripsi -->
+
+            <div class="about-description">
+
+                <p>
+
+                    SEISMIC WAVES ADALAH BRAND STREETWEAR
+                    YANG MENGHADIRKAN GAYA MODERN, NYAMAN,
+                    DAN BEBAS UNTUK MENUNJUKKAN KARAKTER
+                    SETIAP ANAK.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Foto kecil -->
+
+            <div class="about-small-image">
+
+                <img
+                    src="{{ url_for('static', filename='pictures/About 2.jpeg') }}"
+                    alt="Seismic Waves"
+                >
+
+            </div>
+
+
+
+            <!-- Tahun -->
+
+            <div class="about-since">
+
+                <span>
+                    SINCE
+                </span>
+
+                <strong>
+                    2022
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+    
+    <section class="seismic-2022">
+
+    <!-- AREA ORBIT FOTO -->
+  <div class="seismic-orbit-window">
+
+    <div class="seismic-orbit">
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk 1.jpeg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk 2.jpeg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk 3.jpeg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk 4.jpeg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk 5.jpg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk 6.jpg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk 7.jpg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk/spiderman-white/1.jpg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk/hoodie-spiderman-red-blue/1.jpg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk/knitwear-reality-club-army/1.jpg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk/black-shirt/1.jpg') }}" alt="">
+        </div>
+
+        <div class="seismic-photo">
+            <img src="{{ url_for('static', filename='pictures/produk/crewneck-kenjaku/1.jpg') }}" alt="">
+        </div>
+
+    </div>
+
+</div>
+    </div>
+
+
+    <!-- KONTEN TENGAH -->
+<div class="seismic-center">
+
+
+    <h2>
+        best seller
+        <br>
+        Seismic Waves
+    </h2>
+
+
+                 <a
+                   href="{{ url_for('catalog') }}"
+                    class="btn"
+                >
+
+                    Shop Now
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+</div>
+
+</section>
+</main>
+
+
+{% endblock %}
+
+
+
+<!-- =====================================================
+     ABOUT PAGE JAVASCRIPT
+===================================================== -->
+
+{% block scripts %}
+
+<script
+    src="{{ url_for('static', filename='js/about.js') }}"
+>
+</script>
+
+{% endblock %}

@@ -1,0 +1,299 @@
+/* ================= PRODUCT ================= */
+
+@media(max-width:992px){
+.product-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:768px){
+.product-grid{
+grid-template-columns:1fr;
+}
+
+}
+/* ================= FOOTER ================= */
+
+@media(max-width:992px){
+.footer-container{
+grid-template-columns:1fr;
+gap:40px;
+text-align:center;
+}
+
+.footer-about p{
+margin:auto;
+}
+
+.footer-contact li{
+justify-content:center;
+}
+
+.social-icons{ 
+justify-content:center;
+}
+
+}
+ /* ==================================================
+   HAMBURGER MENU
+================================================== */
+
+.hamburger {
+    display: none;
+}
+
+
+/* ==================================================
+   MOBILE NAVIGATION
+================================================== */
+
+@media (max-width: 768px) {
+
+    /* ==============================
+       NAVBAR
+    ============================== */
+
+    .navbar {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+
+    /* ==============================
+       HAMBURGER
+    ============================== */
+
+    .hamburger {
+
+        display: flex !important;
+
+        width: 42px;
+        height: 42px;
+
+        margin-left: 12px;
+
+        padding: 0;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 5px;
+
+        background: transparent;
+
+        border: 1px solid rgba(255,255,255,.3);
+
+        border-radius: 50%;
+
+        cursor: pointer;
+
+        z-index: 9999;
+    }
+
+
+    .hamburger span {
+
+        display: block;
+
+        width: 17px;
+        height: 2px;
+
+        background: #ffffff;
+
+        border-radius: 2px;
+
+        transition: .3s ease;
+    }
+
+
+    /* ==============================
+       NAV MENU
+    ============================== */
+
+    .navbar nav,
+#mainNav {
+
+    position: absolute !important;
+
+    top: calc(100% + 8px);
+
+    right: 0;
+    left: auto;
+
+    width: 210px;
+
+    padding: 6px;
+
+    background: #181818;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.45);
+
+    display: block !important;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: translateY(-8px);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+
+    z-index: 9998;
+}
+
+
+    /* ==============================
+       MENU AKTIF
+    ============================== */
+
+    .navbar nav.active,
+    #mainNav.active {
+
+        display: block !important;
+
+        opacity: 1 !important;
+
+        visibility: visible !important;
+
+        pointer-events: auto !important;
+
+        transform: translateY(0) !important;
+    }
+
+
+    /* ==============================
+       UL
+    ============================== */
+
+    .navbar nav ul,
+    #mainNav ul {
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        width: 100%;
+
+        margin: 0;
+
+        padding: 0;
+
+        gap: 0;
+    }
+
+
+    /* ==============================
+       LI
+    ============================== */
+
+    .navbar nav ul li,
+    #mainNav ul li {
+
+        display: block !important;
+
+        width: 100%;
+
+        margin: 0;
+
+        padding: 0;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.1);
+    }
+
+
+    .navbar nav ul li:last-child,
+    #mainNav ul li:last-child {
+
+        border-bottom: none;
+    }
+
+
+    /* ==============================
+       LINK
+    ============================== */
+
+    .navbar nav ul li a,
+    #mainNav ul li a {
+
+        display: block !important;
+
+        width: 100%;
+
+        padding: 17px 15px;
+
+        color: #ffffff !important;
+
+        text-decoration: none;
+
+        text-align: center;
+
+        font-size: 15px;
+
+        font-weight: 500;
+
+        transition: .25s ease;
+    }
+
+
+    .navbar nav ul li a:hover,
+    #mainNav ul li a:hover {
+
+        background: rgba(255,255,255,.07);
+
+        color: #ffffff !important;
+    }
+
+
+    /* ==============================
+       HAMBURGER → X
+    ============================== */
+
+    .hamburger.active span:nth-child(1) {
+
+        transform:
+            translateY(7px)
+            rotate(45deg);
+    }
+
+
+    .hamburger.active span:nth-child(2) {
+
+        opacity: 0;
+    }
+
+
+    .hamburger.active span:nth-child(3) {
+
+        transform:
+            translateY(-7px)
+            rotate(-45deg);
+    }
+/* ==========================================
+   URUTAN MOBILE NAVBAR
+   Logo → Cart → Hamburger
+========================================== */
+
+.navbar-icons {
+    order: 2;
+    margin-left: auto;
+}
+
+.hamburger {
+    order: 3;
+    margin-left: 10px;
+}
+}

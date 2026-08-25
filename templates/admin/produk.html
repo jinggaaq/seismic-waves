@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Kelola Produk | Seismic Waves</title>
+
+    <!-- CSS ADMIN DASHBOARD -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin-dashboard.css') }}"
+    >
+
+    <!-- CSS ADMIN PRODUK -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin-produk.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <div class="brand-logo">
+
+                <span>SEISMIC</span>
+
+                <small>WAVES</small>
+
+            </div>
+
+            <p>
+                ADMIN PANEL
+            </p>
+
+        </div>
+
+
+
+        <!-- MENU -->
+
+        <nav class="sidebar-menu">
+
+
+            <div class="menu-label">
+                MENU UTAMA
+            </div>
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="{{ url_for('admin_dashboard') }}"
+                class="menu-item"
+            >
+
+                <span class="menu-icon">
+                    ◈
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <!-- PRODUK -->
+
+            <a
+                href="{{ url_for('admin_produk') }}"
+                class="menu-item active"
+            >
+
+                <span class="menu-icon">
+                    □
+                </span>
+
+                <span>
+                    Produk
+                </span>
+
+            </a>
+
+
+
+                <!-- PESANAN -->
+                <a
+                    href="{{ url_for('admin_pesanan') }}"
+                    class="menu-item"
+                >
+                    <span class="menu-icon">≡</span>
+                    <span>Pesanan</span>
+                </a>
+
+
+
+                <!-- PELANGGAN -->
+                <a
+                    href="{{ url_for('admin_pelanggan') }}"
+                    class="menu-item"
+                >
+                    <span class="menu-icon">○</span>
+                    <span>Pelanggan</span>
+                </a>
+
+        </nav>
+
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <!-- WEBSITE -->
+
+            <a
+                href="{{ url_for('home') }}"
+                class="website-link"
+            >
+
+                <span>
+                    ↗
+                </span>
+
+                Lihat Website
+
+            </a>
+
+
+
+            <!-- ADMIN PROFILE -->
+
+            <div class="admin-profile">
+
+
+                <div class="admin-avatar">
+
+                    {{ admin_nama[0]|upper }}
+
+                </div>
+
+
+                <div class="admin-info">
+
+                    <strong>
+                        {{ admin_nama }}
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('admin_logout') }}"
+                    class="logout-icon"
+                    title="Logout"
+                >
+                    ⇥
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+
+            <div class="page-heading">
+
+
+                <div class="breadcrumb">
+                    ADMIN / PRODUK
+                </div>
+
+
+                <h1>
+                    Kelola Produk
+                </h1>
+
+
+                <p>
+                    Kelola seluruh produk Seismic Waves
+                    dari satu tempat.
+                </p>
+
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <a
+                    href="{{ url_for('admin_tambah_produk') }}"
+                    class="add-product-btn"
+                >
+
+                    <span>
+                        +
+                    </span>
+
+                    Tambah Produk
+
+                </a>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             FLASH MESSAGE
+        ================================================== -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div
+                            class="flash flash-{{ category }}"
+                        >
+
+                            <span class="flash-icon">
+
+                                {% if category == "success" %}
+                                    ✓
+                                {% else %}
+                                    !
+                                {% endif %}
+
+                            </span>
+
+                            <span>
+                                {{ message }}
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+
+        <!-- =================================================
+             PRODUCT PANEL
+        ================================================== -->
+
+        <section class="product-panel">
+
+
+            <!-- PANEL HEADER -->
+
+            <div class="product-panel-header">
+
+
+                <div>
+
+                    <span class="panel-eyebrow">
+                        INVENTORY
+                    </span>
+
+                    <h2>
+                        Semua Produk
+                    </h2>
+
+                    <p>
+                        Daftar seluruh produk yang tersedia
+                        di katalog Seismic Waves.
+                    </p>
+
+                </div>
+
+
+                <div class="product-count">
+
+                    {{ produk|length }}
+
+                    <span>
+                        Produk
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="product-table-wrapper">
+
+
+                <table class="product-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th class="col-id">
+                                ID
+                            </th>
+
+                            <th class="col-product">
+                                PRODUK
+                            </th>
+
+                            <th>
+                                KATEGORI
+                            </th>
+
+                            <th>
+                                HARGA
+                            </th>
+
+                            <th>
+                                STOK
+                            </th>
+
+                            <th>
+                                UKURAN
+                            </th>
+
+                            <th class="col-action">
+                                AKSI
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                    {% for item in produk %}
+
+
+                        <tr>
+
+
+                            <!-- ID -->
+
+                            <td class="product-id">
+
+                                #{{ item.id }}
+
+                            </td>
+
+
+
+                            <!-- PRODUK + FOTO -->
+
+                            <td>
+
+
+                                <div class="product-info">
+
+
+                                    <div class="product-image-wrapper">
+
+
+                                        <img
+                                            src="{{ url_for(
+                                                'static',
+                                                filename='pictures/produk/' + item.folder + '/1.jpg'
+                                            ) }}"
+                                            alt="{{ item.nama }}"
+                                            class="product-image"
+                                            loading="lazy"
+                                        >
+
+
+                                    </div>
+
+
+                                    <div class="product-text">
+
+                                        <strong>
+                                            {{ item.nama }}
+                                        </strong>
+
+                                        <span>
+                                            {{ item.folder }}
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </td>
+
+
+
+                            <!-- KATEGORI -->
+
+                            <td>
+
+                                <span class="category-badge">
+
+                                    {{ item.kategori }}
+
+                                </span>
+
+                            </td>
+
+
+
+                            <!-- HARGA -->
+
+                            <td>
+
+                                <span class="product-price">
+
+                                    Rp
+                                    {{ "{:,.0f}".format(item.harga).replace(",", ".") }}
+
+                                </span>
+
+                            </td>
+
+
+
+                            <!-- STOK -->
+
+                            <td>
+
+
+                                {% if item.stok <= 5 %}
+
+
+                                    <span class="stock-badge stock-low">
+
+                                        <span class="stock-dot"></span>
+
+                                        {{ item.stok }}
+
+                                    </span>
+
+
+                                {% else %}
+
+
+                                    <span class="stock-badge stock-safe">
+
+                                        <span class="stock-dot"></span>
+
+                                        {{ item.stok }}
+
+                                    </span>
+
+
+                                {% endif %}
+
+
+                            </td>
+
+
+
+                            <!-- UKURAN -->
+
+                            <td>
+
+
+                                {% if item.ukuran_produk %}
+
+
+                                    <div class="size-list">
+
+
+                                        {% for ukuran in item.ukuran_produk %}
+
+                                            <span class="size-badge">
+
+                                                {{ ukuran.ukuran }}
+
+                                            </span>
+
+                                        {% endfor %}
+
+
+                                    </div>
+
+
+                                {% else %}
+
+
+                                    <span class="no-size">
+                                        -
+                                    </span>
+
+
+                                {% endif %}
+
+
+                            </td>
+
+
+
+                            <!-- AKSI -->
+
+                            <td>
+
+
+                                <div class="action-buttons">
+
+
+                                    <!-- EDIT -->
+
+                                    <a
+                                        href="{{ url_for('admin_edit_produk', id=item.id) }}"
+                                        class="action-btn edit-btn"
+                                    >
+
+                                        Edit
+
+                                    </a>
+
+
+
+                                    <!-- HAPUS -->
+
+                                    <form
+                                        action="{{ url_for('admin_hapus_produk', id=item.id) }}"
+                                        method="POST"
+                                        onsubmit="return confirm('Yakin ingin menghapus produk ini?');"
+                                    >
+
+                                        <button
+                                            type="submit"
+                                            class="action-btn delete-btn"
+                                        >
+
+                                            Hapus
+
+                                        </button>
+
+                                    </form>
+
+
+                                </div>
+
+
+                            </td>
+
+
+                        </tr>
+
+
+                    {% else %}
+
+
+                        <!-- EMPTY -->
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="empty-product"
+                            >
+
+                                <div class="empty-icon">
+                                    □
+                                </div>
+
+                                <strong>
+                                    Belum ada produk
+                                </strong>
+
+                                <span>
+                                    Tambahkan produk pertama
+                                    ke katalog Seismic Waves.
+                                </span>
+
+                                <a
+                                    href="{{ url_for('admin_tambah_produk') }}"
+                                    class="empty-btn"
+                                >
+                                    + Tambah Produk
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                    {% endfor %}
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-footer">
+
+
+            <span>
+                SEISMIC WAVES
+            </span>
+
+
+            <span>
+                ADMIN PANEL · 2026
+            </span>
+
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>
